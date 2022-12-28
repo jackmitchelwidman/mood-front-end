@@ -33,7 +33,7 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Welcome'}}
+          options={{title: 'How are you feeling?'}}
         />
         <Stack.Screen name="FeedScreen" component={FeedScreen} />
       </Stack.Navigator>

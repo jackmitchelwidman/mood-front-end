@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import { Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import CompleteFlatList from 'react-native-complete-flatlist';
+import {View, FlatList, StyleSheet, StatusBar } from 'react-native';
 
 const list = [
     { name: 'Fattah', status: 'Active', time: '8:10 PM', date: '1 Jan 2018' },
@@ -37,8 +38,8 @@ const list = [
     };
   
     return (
-      <SafeAreaView style={{ flex: 1 }}>
-        <CompleteFlatList
+      <SafeAreaView style={styles.container}>
+        <CompleteFlatList style={styles.container}
           searchKey={['name', 'status', 'time', 'date']}
           pullToRefreshCallback={() => console.log('refreshing')}
           data={list}
@@ -47,13 +48,29 @@ const list = [
           highlightColor="yellow"
           renderItem={renderItem}
         />
-        <TouchableOpacity onPress={() => ref.current.clearSearch()} style={{ padding: 5 }}>
+        <TouchableOpacity onPress={() => ref.current.clearSearch()} style={styles.container}>
           <Text>Clear Search</Text>
         </TouchableOpacity>
       </SafeAreaView>
     );
   };
   
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      marginTop: StatusBar.currentHeight || 0,
+    },
+    item: {
+      backgroundColor: '#f9c2ff',
+      padding: 20,
+      marginVertical: 8,
+      marginHorizontal: 16,
+    },
+    title: {
+      fontSize: 32,
+    },
+  });
+
   export default FeedScreen;
   
   
