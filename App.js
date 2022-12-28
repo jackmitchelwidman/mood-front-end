@@ -20,14 +20,6 @@ import {
   Alert,
 } from 'react-native';
 
-async function getFeels(db) {
-  const feelsCol = collection(db, 'feels');
-  const feelSnapshot = await getDocs(feelsCol);
-  const feelList = feelSnapshot.docs.map(doc => doc.data());
-  return feelList;
-}
-
-
 
 const App = () => {
   
