@@ -1,0 +1,1 @@
+gcloud sql connect feel --user=postgres --quiet
