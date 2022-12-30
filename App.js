@@ -19,6 +19,7 @@ import {
   //Button,
   Alert,
 } from 'react-native';
+import { fonts } from '@rneui/base';
 
 
 const App = () => {
@@ -30,10 +31,12 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        <Stack.Screen style={styles.container}
           name="Home"
           component={HomeScreen}
-          options={{title: 'How are you feeling?'}}
+          options={{title: 'How are you feeling?', headerTitleStyle: { fontSize: 32 },}
+          
+        }
         />
         <Stack.Screen name="FeedScreen" component={FeedScreen} />
       </Stack.Navigator>
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems:'center',
-    fontSize: 60,
+    fontWeight: 'bold',
     backgroundColor: "purple",
   },
   parent: {

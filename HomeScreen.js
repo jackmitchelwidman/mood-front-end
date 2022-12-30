@@ -5,7 +5,7 @@ import { FlatList } from 'react-native-complete-flatlist';
 
 import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
-//import {Input, Button} from 'react-native-elements';
+import RoundButton from "./RoundButton"
 import { Button } from '@rneui/themed';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
@@ -47,112 +47,29 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   
   return (
-   
     <>
-       
       <StatusBar barStyle="light-content" />
       <SafeAreaView style={styles.container}>
-        
         <View style={styles.parent}>
-          <View style={styles.button}>
+          <TouchableOpacity style={styles.buttonExcellent} onPress={() => Alert.alert('EXCELLENT')}>
+           
+        </TouchableOpacity>
+        
+          <TouchableOpacity style={styles.buttonHappy} onPress={() => navigation.navigate('FeedScreen')}>
+           
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonOK}>
             
-            <Button style={styles.button2}
-                 title="EXCELLENT" 
-                 titleStyle={{
-                  color: "blue",
-                  fontSize: 28,
-                  fontWeight: "bold",
-              }}
-                 
-                 onPress={
-                   
-                  () => {
-                    
-                    Alert.alert('EXCELLENT!')
-                  
-                }
-                 
-                  
-                 
-                 } >
-                   <Button style={styles.button2}
-                 title="MOODS" 
-                 titleStyle={{
-                  color: "blue",
-                  fontSize: 28,
-                  fontWeight: "bold",
-              }}
-                 
-              onPress={() => navigation.navigate('FeedScreen')
-              
-            } >
-            </Button>
-            </Button>
-          </View>
-          <View style={styles.button}>
-            <Button
-              title="FINE"
-              
-              titleStyle={{
-                color: "lightgreen",
-                fontSize: 28,
-                fontWeight: "bold",
-            }}
-              onPress={() => Alert.alert('Hello')}
-            />
-          </View>
-          <View style={styles.button}>
-            <Button
-              title="MEH"
-              titleStyle={{
-                color: "yellow",
-                fontSize: 28,
-                fontWeight: "bold",
-            }}
-              //color="yellow"
-              
-              onPress={() => Alert.alert('Hello')}
-            />
-          </View>
-          <View style={styles.button}>
-            <Button
-              title="YUCKY"
-              titleStyle={{
-                color: "orange",
-                fontSize: 28,
-                fontWeight: "bold",
-            }}
-              //color="orange"
-              
-              onPress={() => Alert.alert('Hello')}
-            />
-          </View>
-          <View style={styles.button}>
-            <Button
-              title="SHITTY"
-              titleStyle={{
-                color: "darkorange",
-                fontSize: 28,
-                fontWeight: "bold",
-            }}
-              //color="orange"
-              
-              onPress={() => Alert.alert('Hello')}
-            />
-          </View>
-          <View style={styles.button}>
-            <Button
-              title="PISSED"
-              titleStyle={{
-                color: "red",
-                fontSize: 28,
-                fontWeight: "bold",
-            }}
-              //color="red"
-              
-              onPress={() => Alert.alert('Hello')}
-            />
-          </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonBlah}>
+            
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonSad}>
+            
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonAngry}>
+           
+          </TouchableOpacity>
           
         </View>
       </SafeAreaView>
@@ -166,32 +83,109 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems:'center',
     fontSize: 60,
-    backgroundColor: "purple",
+    backgroundColor: "white",
   },
   parent: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: "turquoise",
-    borderRadius: 40
+    backgroundColor: "white",
+    borderRadius: 200,
+    shadowColor: 'black',
+    shadowOffset: { width: 3, height: 3},
+    shadowOpacity: 0.5,
+  
+    
   },
-  button2: {
-    borderRadius: 700,
-  },
-  button: {
-    margin: 20,
+  buttonHappy: {
+    borderRadius: 100,
     borderColor: "black",
-    backgroundColor: "lightblue",
-    borderWidth: 1,
-    width: 220,
-    height: 60,
-    fontSize: 24,
-    fontWeight: "bold",
-    fontFamily: "Arial"
-    //borderRadius: 100
-    
-    
-    
+    borderWidth: 0,
+    backgroundColor: "#61dafb",
+    width: 100,
+    height: 100,
+    margin: 20,
+    shadowColor: 'black',
+    shadowOffset: { width: 3, height: 3},
+    shadowOpacity: 0.5,
+    justifyContent: 'center',
+  },
+
+  //style={{ shadowColor: 'black', shadowOffset: { width: 3, height: 3 }, shadowOpacity: 0.5 }}>
+
+
+  buttonAngry: {
+    borderRadius: 100,
+    borderColor: "black",
+    borderWidth: 2,
+    backgroundColor: "#DC143C",
+    width: 100,
+    height: 100,
+    margin: 20,
+    shadowColor: 'black',
+    shadowOffset: { width: 3, height: 3},
+    shadowOpacity: 0.5,
+  },
+  buttonSad: {
+    borderRadius: 100,
+    borderColor: "black",
+    borderWidth: 2,
+    backgroundColor: "darkgray",
+    width: 100,
+    height: 100,
+    margin: 20,
+    shadowColor: 'black',
+    shadowOffset: { width: 3, height: 3},
+    shadowOpacity: 0.5,
+  },
+  buttonBlah: {
+    borderRadius: 100,
+    borderColor: "black",
+    borderWidth: 2,
+    backgroundColor: "orange",
+    width: 100,
+    height: 100,
+    margin: 20,
+    shadowColor: 'black',
+    shadowOffset: { width: 3, height: 3},
+    shadowOpacity: 0.5,
+  },
+  buttonOK: {
+    borderRadius: 100,
+    borderColor: "black",
+    borderWidth: 2,
+    backgroundColor: "#FFF36D",
+    width: 100,
+    height: 100,
+    margin: 20,
+    shadowColor: 'black',
+    shadowOffset: { width: 3, height: 3},
+    shadowOpacity: 0.5,
+  },
+  buttonHappy: {
+    borderRadius: 100,
+    borderColor: "black",
+    borderWidth: 2,
+    backgroundColor: "#98FB98",
+    width: 100,
+    height: 100,
+    margin: 20,
+    shadowColor: 'black',
+    shadowOffset: { width: 3, height: 3},
+    shadowOpacity: 0.5,
+  },
+  buttonExcellent: {
+    borderRadius: 100,
+    borderColor: "black",
+    borderWidth: 2,
+    backgroundColor: "#61dafb",
+    width: 100,
+    height: 100,
+    margin: 20,
+    shadowColor: 'black',
+    shadowOffset: { width: 3, height: 3},
+    shadowOpacity: 0.5,
   },
 });
+
 
 export default HomeScreen;
