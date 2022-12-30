@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, TabView} from 'react-native';
+import {TouchableOpacity, TabView,Text} from 'react-native';
 import { useState } from 'react';
 import { FlatList } from 'react-native-complete-flatlist';
 
@@ -49,26 +49,31 @@ const HomeScreen = () => {
   return (
     <>
       <StatusBar barStyle="light-content" />
+      <Text style={styles.title}>MOOD</Text>
+      <Text style={styles.question}>How do you feel?</Text>
       <SafeAreaView style={styles.container}>
+      
         <View style={styles.parent}>
           <TouchableOpacity style={styles.buttonExcellent} onPress={() => Alert.alert('EXCELLENT')}>
-           
+           <Text style={styles.buttontext}>Ecstatic</Text>
         </TouchableOpacity>
         
           <TouchableOpacity style={styles.buttonHappy} onPress={() => navigation.navigate('FeedScreen')}>
-           
+          <Text style={styles.buttontext}>Happy</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonOK}>
-            
+          <Text style={styles.buttontext}>OK</Text>
           </TouchableOpacity>
+          </View>
+          <View style={styles.parent}>
           <TouchableOpacity style={styles.buttonBlah}>
-            
+          <Text style={styles.buttontext}>Blah</Text>  
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonSad}>
-            
+          <Text style={styles.buttontext}>Sad</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAngry}>
-           
+          <Text style={styles.buttontext}>Sucky</Text>
           </TouchableOpacity>
           
         </View>
@@ -82,24 +87,46 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems:'center',
+    borderWidth: 0,
     fontSize: 60,
     backgroundColor: "white",
-  },
-  parent: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: "white",
-    borderRadius: 200,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-  
+    flexDirection: "row",
+    justifyContent: "center",
     
+
   },
+
+parent: {
+  borderWidth: 1,
+  borderColor: "#00BFFF",
+  flex: 1,
+  alignItems: 'center'
+
+},
+title: {
+  textAlign: 'center',
+  color: '#00BFFF',
+  fontSize: 100,
+  backgroundColor: "white",
+},
+
+question: {
+  textAlign: 'center',
+  color: 'grey',
+  fontSize: 40,
+  backgroundColor: "white",
+},
+
+buttontext: {
+  textAlign: 'center',
+  color: 'grey',
+  fontWeight: 'bold',
+  fontSize: 20,
+},
   buttonHappy: {
     borderRadius: 100,
-    borderColor: "black",
-    borderWidth: 0,
+    borderColor: "lightgrey",
+    borderWidth: 1,
     backgroundColor: "#61dafb",
     width: 100,
     height: 100,
@@ -107,17 +134,14 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
-    justifyContent: 'center',
+    
   },
-
-  //style={{ shadowColor: 'black', shadowOffset: { width: 3, height: 3 }, shadowOpacity: 0.5 }}>
-
 
   buttonAngry: {
     borderRadius: 100,
-    borderColor: "black",
+    borderColor: "lightgrey",
     borderWidth: 2,
-    backgroundColor: "#DC143C",
+    backgroundColor: "white",
     width: 100,
     height: 100,
     margin: 20,
@@ -127,9 +151,9 @@ const styles = StyleSheet.create({
   },
   buttonSad: {
     borderRadius: 100,
-    borderColor: "black",
+    borderColor: "lightgrey",
     borderWidth: 2,
-    backgroundColor: "darkgray",
+    backgroundColor: "white",
     width: 100,
     height: 100,
     margin: 20,
@@ -139,9 +163,9 @@ const styles = StyleSheet.create({
   },
   buttonBlah: {
     borderRadius: 100,
-    borderColor: "black",
+    borderColor: "lightgrey",
     borderWidth: 2,
-    backgroundColor: "orange",
+    backgroundColor: "white",
     width: 100,
     height: 100,
     margin: 20,
@@ -151,9 +175,9 @@ const styles = StyleSheet.create({
   },
   buttonOK: {
     borderRadius: 100,
-    borderColor: "black",
+    borderColor: "lightgrey",
     borderWidth: 2,
-    backgroundColor: "#FFF36D",
+    backgroundColor: "white",
     width: 100,
     height: 100,
     margin: 20,
@@ -163,9 +187,9 @@ const styles = StyleSheet.create({
   },
   buttonHappy: {
     borderRadius: 100,
-    borderColor: "black",
+    borderColor: "lightgrey",
     borderWidth: 2,
-    backgroundColor: "#98FB98",
+    backgroundColor: "white",
     width: 100,
     height: 100,
     margin: 20,
@@ -175,9 +199,9 @@ const styles = StyleSheet.create({
   },
   buttonExcellent: {
     borderRadius: 100,
-    borderColor: "black",
+    borderColor: "lightgrey",
     borderWidth: 2,
-    backgroundColor: "#61dafb",
+    backgroundColor: "white",
     width: 100,
     height: 100,
     margin: 20,

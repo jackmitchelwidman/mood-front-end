@@ -32,11 +32,9 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen style={styles.container}
-          name="Home"
+          name="mood"
           component={HomeScreen}
-          options={{title: 'How are you feeling?', headerTitleStyle: { fontSize: 32 },}
-          
-        }
+          //options={{title: 'MOOD', headerTitleStyle: { fontSize: 48 },}}
         />
         <Stack.Screen name="FeedScreen" component={FeedScreen} />
       </Stack.Navigator>
