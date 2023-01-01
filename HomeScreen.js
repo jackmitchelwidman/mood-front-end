@@ -58,7 +58,7 @@ const HomeScreen = () => {
            <Text style={styles.buttontext}>Ecstatic</Text>
         </TouchableOpacity>
         
-          <TouchableOpacity style={styles.buttonHappy} onPress={() => logout(navigation).then(console.log('logged out'))}>
+          <TouchableOpacity style={styles.buttonHappy} onPress={() => navigation.navigate('Globe')}>
           
           <Text style={styles.buttontext}> Happy</Text>
           

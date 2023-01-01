@@ -26,6 +26,7 @@ import { fonts } from '@rneui/base';
 
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 import RegisterScreen from './RegisterScreen';
+import Globe from './Globe'
 
 
 
@@ -51,6 +52,7 @@ const App = () => {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="Globe" component={Globe} />
       </Stack.Navigator>
     </NavigationContainer>
   );
