@@ -10,6 +10,7 @@ import {
   StatusBar,
   StyleSheet,
  } from 'react-native';
+import { registerRootComponent } from 'expo';
 
 const Login = () => {
   
@@ -20,9 +21,10 @@ const Login = () => {
       <StatusBar barStyle="light-content" />
       <Text style={styles.title}>MOOD</Text>
       <Text style={styles.question}>How do you feel?</Text>
+      
       <LoginScreen
         onLoginPress={() => { navigation.navigate('HomeScreen')}}
-        onSignupPress={() => {}}
+        onSignupPress={() => { navigation.navigate('RegisterScreen')}}
         onEmailChange={(email) => {}}
         onPasswordChange={(password) => {}}
       >

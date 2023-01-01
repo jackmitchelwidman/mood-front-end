@@ -25,6 +25,7 @@ import {
 import { fonts } from '@rneui/base';
 
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import RegisterScreen from './RegisterScreen';
 
 
 
@@ -42,12 +43,13 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen style={styles.container}
           name="mood"
-          component={Login}
+          component={HomeScreen}
         />
         <Stack.Screen name="FeedScreen" component={FeedScreen} />
         <Stack.Screen name="MoodScreen" component={MoodScreen} />
         <Stack.Screen name="DisplayMoodRing" component={DisplayMoodRing} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>

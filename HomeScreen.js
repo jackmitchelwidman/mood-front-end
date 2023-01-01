@@ -8,7 +8,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import RoundButton from "./RoundButton"
 import { Button } from '@rneui/themed';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+
 
 
 import {
@@ -20,32 +22,30 @@ import {
   Alert,
 } from 'react-native';
 
-async function getFeels(db) {
-  const feelsCol = collection(db, 'feels');
-  const feelSnapshot = await getDocs(feelsCol);
-  const feelList = feelSnapshot.docs.map(doc => doc.data());
-  return feelList;
+async function logout(n) {
+  AsyncStorage.setItem("user", undefined).then(
+    n.navigate('Login')
+  )
 }
 
-async function test() {
-  try {
-    Alert.alert('inside test')
-    const snapshot = await collection(db,'feels').get();
-    Alert.alert('after snapshot')
-    snapshot.forEach((doc) => {
-      Alert.alert('another row')
-    console.log(doc.id, '=>', doc.data());
-    });
-  } catch { error => 
-    console.log('error is ' + error)
-  }
+async function checkUserLogin(n) {
+  
+  AsyncStorage.getItem('user').then(value => {
+    console.log('value=' + value)
+    if (value == undefined) {
+      
+      n.navigate('Login')
+    }
+  });
 }
 
 const HomeScreen = () => {
+
+  const navigation = useNavigation();  
+
+  checkUserLogin(navigation)
   
-  const [feels, setFeels] = useState([]);
-  const navigation = useNavigation();
-  
+
   return (
     <>
       <StatusBar barStyle="light-content" />
@@ -59,7 +59,7 @@ const HomeScreen = () => {
            <Text style={styles.buttontext}>Ecstatic</Text>
         </TouchableOpacity>
         
-          <TouchableOpacity style={styles.buttonHappy} onPress={() => navigation.navigate('DisplayMoodRing')}>
+          <TouchableOpacity style={styles.buttonHappy} onPress={() => logout(navigation).then(console.log('logged out'))}>
           
           <Text style={styles.buttontext}> Happy</Text>
           
