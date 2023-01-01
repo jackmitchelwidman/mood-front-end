@@ -9,6 +9,9 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import HomeScreen from "./HomeScreen"
 import FeedScreen from "./FeedScreen"
+import MoodScreen from "./MoodScreen"
+import DisplayMoodRing from "./DisplayMoodRing"
+import Login from "./Login"
 
 
 import {
@@ -21,9 +24,15 @@ import {
 } from 'react-native';
 import { fonts } from '@rneui/base';
 
+import { AsyncStorage } from '@react-native-async-storage/async-storage';
+
+
+
+
 
 const App = () => {
-  
+ 
+ 
   const [feels, setFeels] = useState([]);
   const Stack = createStackNavigator();
 
@@ -33,10 +42,13 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen style={styles.container}
           name="mood"
-          component={HomeScreen}
-          //options={{title: 'MOOD', headerTitleStyle: { fontSize: 48 },}}
+          component={Login}
         />
         <Stack.Screen name="FeedScreen" component={FeedScreen} />
+        <Stack.Screen name="MoodScreen" component={MoodScreen} />
+        <Stack.Screen name="DisplayMoodRing" component={DisplayMoodRing} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

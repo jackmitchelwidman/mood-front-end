@@ -51,6 +51,7 @@ const HomeScreen = () => {
       <StatusBar barStyle="light-content" />
       <Text style={styles.title}>MOOD</Text>
       <Text style={styles.question}>How do you feel?</Text>
+      
       <SafeAreaView style={styles.container}>
       
         <View style={styles.parent}>
@@ -58,22 +59,24 @@ const HomeScreen = () => {
            <Text style={styles.buttontext}>Ecstatic</Text>
         </TouchableOpacity>
         
-          <TouchableOpacity style={styles.buttonHappy} onPress={() => navigation.navigate('FeedScreen')}>
-          <Text style={styles.buttontext}>Happy</Text>
+          <TouchableOpacity style={styles.buttonHappy} onPress={() => navigation.navigate('DisplayMoodRing')}>
+          
+          <Text style={styles.buttontext}> Happy</Text>
+          
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonOK}>
-          <Text style={styles.buttontext}>OK</Text>
+          <Text style={styles.buttontext}>    OK</Text>
           </TouchableOpacity>
           </View>
           <View style={styles.parent}>
           <TouchableOpacity style={styles.buttonBlah}>
-          <Text style={styles.buttontext}>Blah</Text>  
+          <Text style={styles.buttontext}>   Blah</Text>  
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonSad}>
-          <Text style={styles.buttontext}>Sad</Text>
+          <Text style={styles.buttontext}>    Sad</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAngry}>
-          <Text style={styles.buttontext}>Sucky</Text>
+          <Text style={styles.buttontext}> Angry</Text>
           </TouchableOpacity>
           
         </View>
@@ -118,22 +121,32 @@ question: {
 },
 
 buttontext: {
-  textAlign: 'center',
-  color: 'grey',
+  color: '#00BFFF',
   fontWeight: 'bold',
   fontSize: 20,
+  borderWidth:  0 ,
+  position: 'absolute',
+  top: '35%',
+  left: '14%',
+  
+  
+  
+  
+  
 },
   buttonHappy: {
     borderRadius: 100,
     borderColor: "lightgrey",
-    borderWidth: 1,
+    borderStyle: "solid 1",
     backgroundColor: "#61dafb",
     width: 100,
     height: 100,
-    margin: 20,
-    shadowColor: 'black',
+     shadowColor: 'black',
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
+   
+    
+    
     
   },
 
@@ -148,6 +161,8 @@ buttontext: {
     shadowColor: 'black',
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
+    
+    
   },
   buttonSad: {
     borderRadius: 100,
@@ -164,7 +179,7 @@ buttontext: {
   buttonBlah: {
     borderRadius: 100,
     borderColor: "lightgrey",
-    borderWidth: 2,
+    borderWidth: 0,
     backgroundColor: "white",
     width: 100,
     height: 100,
@@ -172,6 +187,7 @@ buttontext: {
     shadowColor: 'black',
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
+    display: 'flex'
   },
   buttonOK: {
     borderRadius: 100,
@@ -184,6 +200,7 @@ buttontext: {
     shadowColor: 'black',
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
+    
   },
   buttonHappy: {
     borderRadius: 100,
@@ -200,7 +217,7 @@ buttontext: {
   buttonExcellent: {
     borderRadius: 100,
     borderColor: "lightgrey",
-    borderWidth: 2,
+    borderWidth: 0,
     backgroundColor: "white",
     width: 100,
     height: 100,
@@ -208,6 +225,7 @@ buttontext: {
     shadowColor: 'black',
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
+    display: 'flex',
   },
 });
 

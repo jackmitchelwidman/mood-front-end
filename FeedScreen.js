@@ -2,31 +2,13 @@ import React, {useRef} from 'react';
 import { Text, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
 import CompleteFlatList from 'react-native-complete-flatlist';
 import {View, FlatList, StyleSheet, StatusBar } from 'react-native';
-//import fetch from 'react-native-fetch-api';
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-//import fetch from 'react-native-community/fetch';
 
-
-// const list = [
-//     { name: 'Fattah', status: 'Active', time: '8:10 PM', date: '1 Jan 2018' },
-//     { name: 'Syah', status: 'Active', time: '9:14 PM', date: '1 Dec 2018' },
-//     { name: 'Izzat', status: 'Active', time: '8:15 PM', date: '1 Jan 2018' },
-//     { name: 'Ali', status: 'Active', time: '8:10 PM', date: '1 Jan 2018' },
-//     { name: 'Abu', status: 'Active', time: '8:11 PM', date: '1 Jan 2018' },
-//     { name: 'Fitri', status: 'Active', time: '8:20 PM', date: '1 Jan 2018' },
-//     { name: 'Armi', status: 'Active', time: '8:33 PM', date: '1 Jan 2018' },
-//     { name: 'Eidit', status: 'Active', time: '9:10 PM', date: '1 Jan 2018' },
-//     { name: 'Hamdan', status: 'Active', time: '10:10 PM', date: '1 Jan 2018' },
-//     {
-//       name: 'Muhyiddeen',
-//       status: 'Blocked',
-//       time: '10:10 PM',
-//       date: '9 Feb 2018',
-//     },
-//   ];
   
-  const FeedScreen = () => {
+
+const FeedScreen = () => {
 
     const [data, setData] = useState(null);
 
@@ -54,7 +36,9 @@ import axios from 'axios';
     };
   
     return (
+      
       <SafeAreaView style={styles.container}>
+      
       <FlatList 
         data={data}
         renderItem={renderItem}
