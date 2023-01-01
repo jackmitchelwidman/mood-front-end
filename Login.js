@@ -21,7 +21,7 @@ const Login = () => {
       <Text style={styles.title}>MOOD</Text>
       <Text style={styles.question}>How do you feel?</Text>
       <LoginScreen
-        onLoginPress={() => {}}
+        onLoginPress={() => { navigation.navigate('HomeScreen')}}
         onSignupPress={() => {}}
         onEmailChange={(email) => {}}
         onPasswordChange={(password) => {}}
