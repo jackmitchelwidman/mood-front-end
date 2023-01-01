@@ -25,7 +25,7 @@ import {
 async function logout(n) {
   AsyncStorage.setItem("user", undefined).then(
     n.navigate('Login')
-  )
+  ).catch(error => console.log(error))
 }
 
 async function checkUserLogin(n) {
@@ -33,10 +33,9 @@ async function checkUserLogin(n) {
   AsyncStorage.getItem('user').then(value => {
     console.log('value=' + value)
     if (value == undefined) {
-      
       n.navigate('Login')
     }
-  });
+  }).catch(error => console.log(error));
 }
 
 const HomeScreen = () => {

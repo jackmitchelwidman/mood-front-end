@@ -1,8 +1,10 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Text, StatusBar } from "react-native";
 import LoginScreen from "react-native-login-screen";
+import { useNavigation } from '@react-navigation/native';
 
 const RegisterScreen = () => {
+    const navigation = useNavigation();
   const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
 
@@ -19,6 +21,7 @@ const RegisterScreen = () => {
         disableSocialButtons={true}
         loginButtonText={"Sign up"}
         disableSignup={true}
+        
       />
       </>
       
