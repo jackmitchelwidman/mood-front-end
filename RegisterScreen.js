@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, TextInput } from "react-native";
+import { SafeAreaView, StyleSheet, Text, StatusBar } from "react-native";
 import LoginScreen from "react-native-login-screen";
 
 const RegisterScreen = () => {
@@ -7,7 +7,10 @@ const RegisterScreen = () => {
   const [number, onChangeNumber] = React.useState(null);
 
   return (
-    
+    <>
+    <StatusBar barStyle="light-content" />
+      <Text style={styles.title}>MOOD</Text>
+      <Text style={styles.question}>How do you feel?</Text>
       <LoginScreen
         onLoginPress={() => { navigation.navigate('HomeScreen')}}
         onSignupPress={() => { navigation.navigate('RegisterScreen')}}
@@ -17,6 +20,8 @@ const RegisterScreen = () => {
         loginButtonText={"Sign up"}
         disableSignup={true}
       />
+      </>
+      
     
   );
 };
@@ -27,6 +32,20 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+  },
+  title: {
+    textAlign: 'center',
+    color: '#00BFFF',
+    fontSize: 100,
+    backgroundColor: "white",
+    borderWidth: 0,
+  },
+  
+  question: {
+    textAlign: 'center',
+    color: 'grey',
+    fontSize: 40,
+    backgroundColor: "white",
   },
 });
 
