@@ -12,6 +12,7 @@ import FeedScreen from "./FeedScreen"
 import MoodScreen from "./MoodScreen"
 import DisplayMoodRing from "./DisplayMoodRing"
 import Login from "./Login"
+import ColorKey from "./ColorKey"
 
 
 import {
@@ -26,19 +27,18 @@ import { fonts } from '@rneui/base';
 
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 import RegisterScreen from './RegisterScreen';
-import Globe from './Globe'
-
+import Globe from './Globe';
+import PieChart from './MoodPieChart';
+import BezierLineChart from './BezierLineChart';
 
 
 
 
 const App = () => {
- 
- 
+  
   const [feels, setFeels] = useState([]);
   const Stack = createStackNavigator();
-
-  
+ 
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -53,6 +53,15 @@ const App = () => {
         <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="Globe" component={Globe} />
+        <Stack.Screen name="PieChart" component={PieChart} 
+          options={{ title: 'The Last Week' }}
+        />
+        <Stack.Screen name="ColorKey" component={ColorKey} 
+           options={{ title: 'The Colors' }}
+        />
+        <Stack.Screen name="BezierLineChart" component={BezierLineChart} 
+           options={{ title: 'The Colors' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

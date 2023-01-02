@@ -1,43 +1,13 @@
 import React from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {View, Text, StatusBar, StyleSheet, SafeAreaView} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
-
-
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  View,
-  //Button,
-  Alert,
-} from 'react-native';
-
-async function logout(n) {
-  AsyncStorage.setItem("user", undefined).then(
-    n.navigate('Login')
-  ).catch(error => console.log(error))
-}
-
-async function checkUserLogin(n) {
-  
-  AsyncStorage.getItem('user').then(value => {
-    console.log('value=' + value)
-    if (value == undefined) {
-      n.navigate('Login')
-    }
-  }).catch(error => console.log(error));
-}
-
-const HomeScreen = () => {
+const ColorKey = () => {
 
   const navigation = useNavigation();  
 
-  checkUserLogin(navigation)
   
-
   return (
     <>
       <StatusBar barStyle="light-content" />
@@ -45,33 +15,27 @@ const HomeScreen = () => {
       <Text style={styles.question}>How do you feel?</Text>
       
       <SafeAreaView style={styles.container}>
-      
-        <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonExcellent} onPress={() => logout(navigation)}>
-           <Text style={styles.buttontext}>Ecstatic</Text>
-        </TouchableOpacity>
+        <View>
         
-          <TouchableOpacity style={styles.buttonHappy} onPress={() => navigation.navigate('Globe')}>
-          
-          <Text style={styles.buttontext}> Happy</Text>
-          
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonOK}>
-          <Text style={styles.buttontext}>    OK</Text>
-          </TouchableOpacity>
-          </View>
-          <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBlah} onPress={() => navigation.navigate('BezierLineChart')}>
-          <Text style={styles.buttontext}>   Blah</Text>  
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonSad}>
-          <Text style={styles.buttontext} onPress={() => navigation.navigate('ColorKey')}>    Sad</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonAngry}>
-          <Text style={styles.buttontext} onPress={() => navigation.navigate('PieChart')}> Angry</Text>
-          </TouchableOpacity>
-          
+           <Text style={styles.buttonExcellent}>Ecstatic</Text>
+        
+        
+           <Text style={styles.buttonHappy}>Happy</Text>
+       
+       
+           <Text style={styles.buttonOK}>OK</Text>
+       </View>
+       <View>
+       
+           <Text style={styles.buttonBlah}>Blah</Text>
+       
+       
+           <Text style={styles.buttonSad}>Sad</Text>
+       
+           <Text style={styles.buttonAngry}>Angry</Text>
+       
         </View>
+          
       </SafeAreaView>
     </>
     
@@ -127,7 +91,7 @@ buttontext: {
   
 },
   buttonHappy: {
-    borderRadius: 100,
+    borderRadius: 50,
     borderColor: "lightgrey",
     borderStyle: "solid 1",
     backgroundColor: "#61dafb",
@@ -145,7 +109,7 @@ buttontext: {
   buttonAngry: {
     borderRadius: 100,
     borderColor: "lightgrey",
-    borderWidth: 2,
+    borderWidth: 0,
     backgroundColor: "white",
     width: 100,
     height: 100,
@@ -159,7 +123,7 @@ buttontext: {
   buttonSad: {
     borderRadius: 100,
     borderColor: "lightgrey",
-    borderWidth: 2,
+    borderWidth: 0,
     backgroundColor: "white",
     width: 100,
     height: 100,
@@ -184,7 +148,7 @@ buttontext: {
   buttonOK: {
     borderRadius: 100,
     borderColor: "lightgrey",
-    borderWidth: 2,
+    borderWidth: 0,
     backgroundColor: "white",
     width: 100,
     height: 100,
@@ -197,8 +161,8 @@ buttontext: {
   buttonHappy: {
     borderRadius: 100,
     borderColor: "lightgrey",
-    borderWidth: 2,
-    backgroundColor: "white",
+    borderWidth: 0,
+    backgroundColor: "orange",
     width: 100,
     height: 100,
     margin: 20,
@@ -210,16 +174,17 @@ buttontext: {
     borderRadius: 100,
     borderColor: "lightgrey",
     borderWidth: 0,
-    backgroundColor: "white",
+    backgroundColor: "00BFFF",
     width: 100,
     height: 100,
     margin: 20,
     shadowColor: 'black',
     shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-    display: 'flex',
+    shadowOpacity: 0.5
+   
+
   },
 });
 
 
-export default HomeScreen;
+export default ColorKey;
