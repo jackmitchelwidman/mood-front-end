@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { FlatList } from 'react-native-complete-flatlist';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Button } from '@rneui/themed';
 
 
@@ -38,31 +39,22 @@ const App = () => {
   
   const [feels, setFeels] = useState([]);
   const Stack = createStackNavigator();
+  const Tab = createBottomTabNavigator();
  
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen style={styles.container}
-          name="mood"
+      <Tab.Navigator>
+        <Tab.Screen style={styles.container}
+          name="Home"
           component={HomeScreen}
         />
-        <Stack.Screen name="FeedScreen" component={FeedScreen} />
-        <Stack.Screen name="MoodScreen" component={MoodScreen} />
-        <Stack.Screen name="DisplayMoodRing" component={DisplayMoodRing} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen name="Globe" component={Globe} />
-        <Stack.Screen name="PieChart" component={PieChart} 
-          options={{ title: 'The Last Week' }}
-        />
-        <Stack.Screen name="ColorKey" component={ColorKey} 
-           options={{ title: 'The Colors' }}
-        />
-        <Stack.Screen name="BezierLineChart" component={BezierLineChart} 
-           options={{ title: 'The Colors' }}
-        />
-      </Stack.Navigator>
+        
+        <Tab.Screen name="Login" component={Login} />
+        <Tab.Screen name="RegisterScreen" component={RegisterScreen} />
+        <Tab.Screen name="Data" component={PieChart} 
+          options={{ title: 'Data' }}/>
+        
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
