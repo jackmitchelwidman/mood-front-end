@@ -31,30 +31,40 @@ import RegisterScreen from './RegisterScreen';
 import Globe from './Globe';
 import PieChart from './MoodPieChart';
 import BezierLineChart from './BezierLineChart';
+import SettingsScreen from './SettingsScreen';
 
 
+function StackNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Settings" component={Settings} />
+    </Stack.Navigator>
+  );
+}
 
 
 const App = () => {
   
   const [feels, setFeels] = useState([]);
-  const Stack = createStackNavigator();
+  
   const Tab = createBottomTabNavigator();
+  const Stack = createStackNavigator();
  
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator >
         <Tab.Screen style={styles.container}
           name="Home"
           component={HomeScreen}
         />
         
-        <Tab.Screen name="Login" component={Login} />
-        <Tab.Screen name="RegisterScreen" component={RegisterScreen} />
         <Tab.Screen name="Data" component={PieChart} 
           options={{ title: 'Data' }}/>
-        
-      </Tab.Navigator>
+        <Tab.Screen name="Settings" component={SettingsScreen} />  
+        <Tab.Screen name="Login" component={Login} options={{ tabBarVisible: false }}/>
+        </Tab.Navigator>
     </NavigationContainer>
   );
 };

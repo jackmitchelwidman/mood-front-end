@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import {View, Text, TextInput, Button, StatusBar,  StyleSheet, Alert} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import { logout } from './HomeScreen';
+
 
 const SettingsScreen = () => {
 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigation = useNavigation(); 
 
     return (
       <>
@@ -30,6 +34,9 @@ const SettingsScreen = () => {
         style={styles.password}
       />
       <Button title="Reset Password" onPress={() => Alert.alert('tbd')} style={{marginTop: '30px'}}/>
+    </View>
+    <View>
+      <Button title="logout" onPress={() => logout(navigation)}/>
     </View>
       </SafeAreaView>
       </>

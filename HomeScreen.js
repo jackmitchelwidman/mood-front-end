@@ -15,8 +15,8 @@ import {
   Alert,
 } from 'react-native';
 
-async function logout(n) {
-  AsyncStorage.setItem("user", undefined).then(
+export async function logout(n) {
+  AsyncStorage.setItem("user", '').then(
     n.navigate('Login')
   ).catch(error => console.log(error))
 }
@@ -24,9 +24,8 @@ async function logout(n) {
 async function checkUserLogin(n) {
   
   AsyncStorage.getItem('user').then(value => {
-    console.log('value=' + value)
-    if (value == undefined) {
-      n.navigate('Login')
+    if (value == '') {
+      n.navigate('Login');
     }
   }).catch(error => console.log(error));
 }
