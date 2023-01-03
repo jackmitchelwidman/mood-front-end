@@ -5,8 +5,8 @@ import { FlatList } from 'react-native-complete-flatlist';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button } from '@rneui/themed';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+
+
 import HomeScreen from "./HomeScreen"
 import FeedScreen from "./FeedScreen"
 import MoodScreen from "./MoodScreen"
