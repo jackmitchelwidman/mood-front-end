@@ -2,6 +2,7 @@ import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import Header from './Header'
 
 
 
@@ -41,34 +42,33 @@ const Happy = () => {
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <Text style={styles.title}>MOOD</Text>
-      <Text style={styles.question}>What sort of Happiness?</Text>
+      <Header/>
       
       <SafeAreaView style={styles.container}>
       
         <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonExcellent} onPress={() => logout(navigation)}>
-           <Text style={styles.buttontext}> Joy</Text>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => logout(navigation)}>
+          
         </TouchableOpacity>
         
-          <TouchableOpacity style={styles.buttonHappy} onPress={() => navigation.navigate('Globe')}>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Globe')}>
           
-          <Text style={styles.buttontext}>Excitement</Text>
+          
           
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonOK}>
-          <Text style={styles.buttontext}>  Pride</Text>
+          <TouchableOpacity style={styles.buttonBasic}>
+          
           </TouchableOpacity>
           </View>
           <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBlah} onPress={() => navigation.navigate('BezierLineChart')}>
-          <Text style={styles.buttontext}>Contentment</Text>  
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('BezierLineChart')}>
+          
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonSad}>
-          <Text style={styles.buttontext} onPress={() => navigation.navigate('ColorKey')}>Gratitude</Text>
+          <TouchableOpacity style={styles.buttonBasic}>
+          
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonAngry}>
-          <Text style={styles.buttontext} onPress={() => navigation.navigate('PieChart')}>Amusement</Text>
+          <TouchableOpacity style={styles.buttonBasic}>
+          
           </TouchableOpacity>
           
         </View>
@@ -92,10 +92,11 @@ const styles = StyleSheet.create({
   },
 
 parent: {
-  borderWidth: 1,
+  borderWidth: 0,
   borderColor: "#00BFFF",
   flex: 1,
-  alignItems: 'center'
+  alignItems: 'center',
+  justifyContent: 'space-around',
 
 },
 title: {
@@ -113,112 +114,35 @@ question: {
 },
 
 buttontext: {
-  color: '#00BFFF',
+  color: 'black',
   fontWeight: 'bold',
   fontSize: 20,
   borderWidth:  0 ,
-  position: 'absolute',
-  top: '35%',
-  left: '14%',
+  
   
   
   
   
   
 },
-  buttonHappy: {
-    borderRadius: 100,
+  buttonBasic: {
+    borderRadius: 110,
     borderColor: "lightgrey",
     borderStyle: "solid 1",
-    backgroundColor: "#61dafb",
-    width: 100,
-    height: 100,
-     shadowColor: 'black',
+    backgroundColor: "white",
+    width: 110,
+    height: 110,
+     shadowColor: '',
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
+    marginTop: 10,
    
     
     
     
   },
 
-  buttonAngry: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 2,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-    
-    
-  },
-  buttonSad: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 2,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-  },
-  buttonBlah: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 0,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-    display: 'flex'
-  },
-  buttonOK: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 2,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-    
-  },
-  buttonHappy: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 2,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-  },
-  buttonExcellent: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 0,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-    display: 'flex',
-  },
+  
 });
 
 

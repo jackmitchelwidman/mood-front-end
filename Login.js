@@ -11,10 +11,12 @@ import {
 import axios from 'axios';
 import Header from './Header'
 
+
+
 async function login(email,password, navigation) {
   const url = 'http://feel-databytes.herokuapp.com/login';
   await axios.post(url, {
-    userName: email,
+    email: email,
     password: password
   }, {
     headers: {
@@ -38,10 +40,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
-
-    
-  
-  return (
+    return (
     <>
       <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}}/>
       <Header/>

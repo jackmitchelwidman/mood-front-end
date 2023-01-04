@@ -6,37 +6,35 @@ import { logout } from './HomeScreen';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './Header';
+import getUserSessionValue from './SecurityCheck'
 
-async function resetPassword()  {
+async function resetPassword(email, password, navigation) {
   const url = 'http://feel-databytes.herokuapp.com/encryptpassword';
-await axios. post(url, {
-  userName: 'jack',
-  password: 'bbb'
-}, {
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
-  .then(function (response) {
-    console.log(response);
+  console.log("email=" + email + ' and password=' + password);
+  await axios.post(url, {
+    email: email,
+    password: password,
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
-  .catch(function (error) {
-    console.log(error);
-  });
+.then(response => { 
+  console.log('Response: ' + response.data)  
+  navigation.navigate('HomeScreen');
+  }).catch(error=>console.log('Error: ' + error))
+
+
 }
-  
-
-
-
-
-const SettingsScreen = () => {
+  const SettingsScreen = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const navigation = useNavigation(); 
-
-    return (
+  const navigation = useNavigation();
+  getUserSessionValue().then(value => setEmail(value))
+  
+  return (
       <>
       <StatusBar barStyle="light-content" />
      <Header /> 
@@ -58,7 +56,7 @@ const SettingsScreen = () => {
         onChangeText={setConfirmPassword}
         style={styles.password}
       />
-      <Button title="Reset Password" onPress={() => resetPassword()} style={{marginTop: '30px'}}/>
+      <Button title="Reset Password" onPress={() => resetPassword(email, password,  navigation)} style={{marginTop: '30px'}}/>
     </View>
     <View>
       <Button title="logout" onPress={() => logout(navigation)}/>

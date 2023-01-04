@@ -43,32 +43,20 @@ const HomeScreen = () => {
       <SafeAreaView style={styles.container}>
       
         <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBasic} onPress={() => logout(navigation)}>
-           <Text style={styles.buttontext}>happy</Text>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Happy')}>
+          <Image source={require('./assets/good.png')} style={{ width: '100%', height:'100%'}} />
         </TouchableOpacity>
         
           <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('FeedScreen')}>
-            <Text style={styles.buttontext}>sad</Text>
+          <Image source={require('./assets/neutral.png')} style={{ width: '100%', height:'100%'}} />
           </TouchableOpacity>
           
           
           <TouchableOpacity style={styles.buttonBasic}>
-          <Text style={styles.buttontext}>fear</Text>
+          <Image source={require('./assets/bad.png')} style={{ width: '100%', height:'100%'}} />
           </TouchableOpacity>
           </View>
-          <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('BezierLineChart')}>
-          <Text style={styles.buttontext}>anger</Text>   
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonBasic}>
-          <Text style={styles.buttontext} onPress={() => navigation.navigate('ColorKey')}>disgust</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonBasic}>
-          <Text style={styles.buttontext} onPress={() => navigation.navigate('PieChart')}>surprise</Text>
-          </TouchableOpacity>
-          
-        </View>
-      </SafeAreaView>
+          </SafeAreaView>
     </>
     
   );
@@ -93,7 +81,9 @@ parent: {
   borderColor: "#00BFFF",
   flex: 1,
   alignItems: 'center',
-  backgroundColor: "white",
+  backgroundColor: 'white',
+  flexDirection: "row",
+  justifyContent: 'space-around'
 
 },
 title: {
@@ -119,97 +109,18 @@ buttontext: {
   textAlignVertical: 'center',
   backgroundColor: "white",
 },
-  buttonHappy: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderStyle: "solid 1",
-    backgroundColor: "#61dafb",
-    width: 100,
-    height: 100,
-     shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-   
-    
-    
-    
-  },
-
-  buttonAngry: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 2,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-    
-    
-  },
-  buttonSad: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 2,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-  },
-  buttonBlah: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 0,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-    display: 'flex'
-  },
-  buttonOK: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 2,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-    
-  },
-  buttonHappy: {
-    borderRadius: 100,
-    borderColor: "lightgrey",
-    borderWidth: 2,
-    backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
-  },
+  
   buttonBasic: {
-    borderRadius: 100,
+    //borderRadius: 100,
     borderColor: "lightgrey",
     borderWidth: 0,
     backgroundColor: "white",
-    width: 100,
-    height: 100,
-    margin: 20,
-    shadowColor: 'black',
-    shadowOffset: { width: 3, height: 3},
-    shadowOpacity: 0.5,
+    width: 120,
+    height: 120,
+
+    // shadowColor: 'black',
+    // shadowOffset: { width: 3, height: 3},
+    // shadowOpacity: 0.5,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
