@@ -1,6 +1,7 @@
 import { View, Text, Dimensions, StyleSheet, StatusBar } from 'react-native'
 import React from 'react'
 import { PieChart } from 'react-native-chart-kit';
+import Header from './Header';
 
 const pieData = [
     {
@@ -33,9 +34,9 @@ const pieData = [
 function MoodPieChart() {
     return (
       <>
-      <StatusBar barStyle="light-content" />
-        <Text style={styles.title}>MOOD</Text>
-        <Text style={styles.question}>How do you feel?</Text>
+      <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}} />
+        <Header/>
+       
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       <PieChart
             data={pieData}  

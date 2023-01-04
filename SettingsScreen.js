@@ -3,10 +3,35 @@ import {View, Text, TextInput, Button, StatusBar,  StyleSheet, Alert} from 'reac
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { logout } from './HomeScreen';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Header from './Header';
+
+async function resetPassword()  {
+  const url = 'http://feel-databytes.herokuapp.com/encryptpassword';
+await axios. post(url, {
+  userName: 'jack',
+  password: 'bbb'
+}, {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+  
+
+
 
 
 const SettingsScreen = () => {
 
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigation = useNavigation(); 
@@ -14,8 +39,8 @@ const SettingsScreen = () => {
     return (
       <>
       <StatusBar barStyle="light-content" />
-      <Text style={styles.title}>MOOD</Text>
-      <Text style={styles.question}>How do you feel?</Text>
+     <Header /> 
+      
       <SafeAreaView style={{backgroundColor: 'white'}}>
       <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
       <TextInput
@@ -33,7 +58,7 @@ const SettingsScreen = () => {
         onChangeText={setConfirmPassword}
         style={styles.password}
       />
-      <Button title="Reset Password" onPress={() => Alert.alert('tbd')} style={{marginTop: '30px'}}/>
+      <Button title="Reset Password" onPress={() => resetPassword()} style={{marginTop: '30px'}}/>
     </View>
     <View>
       <Button title="logout" onPress={() => logout(navigation)}/>

@@ -1,45 +1,25 @@
 import React from 'react';
 import {TouchableOpacity, TabView} from 'react-native';
 import { useState } from 'react';
-import { FlatList } from 'react-native-complete-flatlist';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Button } from '@rneui/themed';
-
-
 import HomeScreen from "./HomeScreen"
 import FeedScreen from "./FeedScreen"
-import MoodScreen from "./MoodScreen"
-import DisplayMoodRing from "./DisplayMoodRing"
 import Login from "./Login"
-import ColorKey from "./ColorKey"
-
-
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  View,
-  //Button,
-  Alert,
-} from 'react-native';
-import { fonts } from '@rneui/base';
-
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
-import RegisterScreen from './RegisterScreen';
-import Globe from './Globe';
+import { StyleSheet} from 'react-native';
 import PieChart from './MoodPieChart';
-import BezierLineChart from './BezierLineChart';
 import SettingsScreen from './SettingsScreen';
+import MoodPieChart from './MoodPieChart';
 
 
 function StackNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Profile" component={PieChart} />
       <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );
 }
@@ -56,10 +36,7 @@ const App = () => {
     <NavigationContainer>
       <Tab.Navigator >
         <Tab.Screen style={styles.container}
-          name="Home"
-          component={HomeScreen}
-        />
-        
+          name="HomeScreen" component={HomeScreen}/>
         <Tab.Screen name="Data" component={PieChart} 
           options={{ title: 'Data' }}/>
         <Tab.Screen name="Settings" component={SettingsScreen} />  

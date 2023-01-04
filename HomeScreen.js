@@ -1,10 +1,8 @@
 import React from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text, Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Header from './Header'
 
 import {
   SafeAreaView,
@@ -24,7 +22,8 @@ export async function logout(n) {
 async function checkUserLogin(n) {
   
   AsyncStorage.getItem('user').then(value => {
-    if (value == '') {
+
+    if (value == null) {
       n.navigate('Login');
     }
   }).catch(error => console.log(error));
@@ -40,34 +39,32 @@ const HomeScreen = () => {
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <Text style={styles.title}>MOOD</Text>
-      <Text style={styles.question}>How do you feel?</Text>
-      
+      <Header />
       <SafeAreaView style={styles.container}>
       
         <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonExcellent} onPress={() => logout(navigation)}>
-           <Text style={styles.buttontext}>Ecstatic</Text>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => logout(navigation)}>
+           <Text style={styles.buttontext}>happy</Text>
         </TouchableOpacity>
         
-          <TouchableOpacity style={styles.buttonHappy} onPress={() => navigation.navigate('Globe')}>
-          
-          <Text style={styles.buttontext}> Happy</Text>
-          
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('FeedScreen')}>
+            <Text style={styles.buttontext}>sad</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonOK}>
-          <Text style={styles.buttontext}>    OK</Text>
+          
+          
+          <TouchableOpacity style={styles.buttonBasic}>
+          <Text style={styles.buttontext}>fear</Text>
           </TouchableOpacity>
           </View>
           <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBlah} onPress={() => navigation.navigate('BezierLineChart')}>
-          <Text style={styles.buttontext}>   Blah</Text>  
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('BezierLineChart')}>
+          <Text style={styles.buttontext}>anger</Text>   
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonSad}>
-          <Text style={styles.buttontext} onPress={() => navigation.navigate('ColorKey')}>    Sad</Text>
+          <TouchableOpacity style={styles.buttonBasic}>
+          <Text style={styles.buttontext} onPress={() => navigation.navigate('ColorKey')}>disgust</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonAngry}>
-          <Text style={styles.buttontext} onPress={() => navigation.navigate('PieChart')}> Angry</Text>
+          <TouchableOpacity style={styles.buttonBasic}>
+          <Text style={styles.buttontext} onPress={() => navigation.navigate('PieChart')}>surprise</Text>
           </TouchableOpacity>
           
         </View>
@@ -86,15 +83,17 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     flexDirection: "row",
     justifyContent: "center",
+    marginBottom: 20
     
 
   },
 
 parent: {
-  borderWidth: 1,
+  borderWidth: 0,
   borderColor: "#00BFFF",
   flex: 1,
-  alignItems: 'center'
+  alignItems: 'center',
+  backgroundColor: "white",
 
 },
 title: {
@@ -112,18 +111,13 @@ question: {
 },
 
 buttontext: {
-  color: '#00BFFF',
+  color: 'lightgrey',
   fontWeight: 'bold',
   fontSize: 20,
   borderWidth:  0 ,
-  position: 'absolute',
-  top: '35%',
-  left: '14%',
-  
-  
-  
-  
-  
+  textAlign: 'center',
+  textAlignVertical: 'center',
+  backgroundColor: "white",
 },
   buttonHappy: {
     borderRadius: 100,
@@ -205,7 +199,7 @@ buttontext: {
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
   },
-  buttonExcellent: {
+  buttonBasic: {
     borderRadius: 100,
     borderColor: "lightgrey",
     borderWidth: 0,
@@ -217,6 +211,8 @@ buttontext: {
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
     display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

@@ -15,6 +15,7 @@ const FeedScreen = () => {
     useEffect(() => {
       async function fetchData() {
         try {
+          //const url = "https://localhost:9000/moods";
           const url = 'http://feel-databytes.herokuapp.com/moods';
           //const url = 'http://192.168.1.254:9000/moods';
           const response = await axios.get(url);
