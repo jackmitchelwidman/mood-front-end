@@ -5,7 +5,7 @@ const Header = () => {
 
 return (
 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
-    <Image source={require('./assets/moodlogo.png')} resizeMode={"container"} cache={true} style={{ width: '100%', height:'40%'}} />
+    <Image source={require('./assets/moodlogo.png')} resizeMode={"contain"} cache={true} style={{ width: '100%', height:'40%'}} />
 
     <Text style={styles.question}>How do you feel?</Text>
 </View>
