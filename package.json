@@ -37,6 +37,7 @@
     "react-native-screens": "~3.18.0",
     "react-native-vector-icons": "^9.2.0",
     "react-scripts": "2.1.8",
+    "rgb-hex": "^4.0.0",
     "three": "^0.148.0"
   },
   "devDependencies": {
