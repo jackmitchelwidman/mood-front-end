@@ -5,6 +5,7 @@ import {View, FlatList, StyleSheet, StatusBar } from 'react-native';
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from './Header';
 
   
 
@@ -15,9 +16,7 @@ const FeedScreen = () => {
     useEffect(() => {
       async function fetchData() {
         try {
-          //const url = "https://localhost:9000/moods";
           const url = 'http://feel-databytes.herokuapp.com/moods';
-          //const url = 'http://192.168.1.254:9000/moods';
           const response = await axios.get(url);
           const data = await response.data;
           setData(data);
@@ -30,14 +29,14 @@ const FeedScreen = () => {
 
     
 
-    //const ref = useRef();
+    
     const renderItem = ({item}) => {
-      //const data = item.cleanData ? item.cleanData : item;
       return <Text style={styles.title}>{item.name}</Text>;
     };
   
     return (
-      
+      <>
+      <Header/>
       <SafeAreaView style={styles.container}>
       
       <FlatList 
@@ -46,6 +45,7 @@ const FeedScreen = () => {
         keyExtractor={item => item.name}
       />
     </SafeAreaView>
+    </>
     );
   };
   
@@ -61,10 +61,10 @@ const FeedScreen = () => {
     title: {
       marginTop: 16,
       paddingVertical: 8,
-      borderWidth: 4,
-      borderColor: "#20232a",
+      borderWidth: 1,
+      borderColor: "grey",
       borderRadius: 6,
-      backgroundColor: "#61dafb",
+      backgroundColor: "whitte",
       color: "#20232a",
       textAlign: "center",
       fontSize: 30,

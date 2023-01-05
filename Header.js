@@ -1,11 +1,12 @@
-import {View, Image, Text, StyleSheet} from 'react-native';
+import {View, Image, Text, StyleSheet, StatusBar} from 'react-native';
 
 
 const Header = () => {
 
 return (
 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
-    <Image source={require('./assets/moodlogo.png')} cache={true} style={{ width: '100%', height:'40%'}} />
+    <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}} />
+    <Image source={require('./assets/moodlogo.png')} resizeMode={"contain"} cache={true} style={{ width: '95%', height: '40%'}} />
 
     <Text style={styles.question}>How do you feel?</Text>
 </View>

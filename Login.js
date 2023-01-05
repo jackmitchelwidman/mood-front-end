@@ -10,6 +10,7 @@ import {
  } from 'react-native';
 import axios from 'axios';
 import Header from './Header'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 
 
@@ -42,9 +43,9 @@ const Login = () => {
 
     return (
     <>
-      <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}}/>
+      
       <Header/>
-     
+      <KeyboardAwareScrollView style={{backgroundColor: 'white'}}>
       <View style={{ backgroundColor: 'white', justifyContent: 'in-between', alignItems: 'center' }}>
       <TextInput
         placeholder="email"
@@ -66,6 +67,7 @@ const Login = () => {
       
       <Button title="Register" onPress={() => navigation.navigate('RegisterUserForm')} style={{marginTop: 30}}/>
     </View>
+    </KeyboardAwareScrollView>
     </>
     );
   
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
   container: {
       flex: 1,
       alignItems:'center',
-      borderWidth: 0,
+      borderWidth: 5,
       fontSize: 60,
       backgroundColor: "white",
       flexDirection: "column",
@@ -85,7 +87,7 @@ const styles = StyleSheet.create({
       },
       
     parent: {
-      borderWidth: 1,
+      borderWidth: 5,
       borderColor: "#00BFFF",
       flex: 1,
       alignItems: 'center'
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
       color: '#00BFFF',
       fontWeight: 'bold',
       fontSize: 20,
-      borderWidth:  0 ,
+      borderWidth:  5 ,
   },
   password: {
       color: '#00BFFF',
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
       borderColor: 'lightgrey',
       width: "80%",
       height: 40,
-      marginTop: 30 
+    
   },
 
   email: {

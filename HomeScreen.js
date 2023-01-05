@@ -1,17 +1,10 @@
 import React from 'react';
-import {TouchableOpacity, Text, Image} from 'react-native';
+import {TouchableOpacity, StyleSheet, View,  Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Header from './Header'
+import Header from './Header';
 
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  View,
-  //Button,
-  Alert,
-} from 'react-native';
+
 
 export async function logout(n) {
   AsyncStorage.setItem("user", '').then(
@@ -38,12 +31,12 @@ const HomeScreen = () => {
 
   return (
     <>
-      <StatusBar barStyle="light-content" />
+      
       <Header />
-      <SafeAreaView style={styles.container}>
+      
       
         <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Happy')}>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Good')}>
           <Image source={require('./assets/good.png')} style={{ width: '100%', height:'100%'}} />
         </TouchableOpacity>
         
@@ -56,7 +49,7 @@ const HomeScreen = () => {
           <Image source={require('./assets/bad.png')} style={{ width: '100%', height:'100%'}} />
           </TouchableOpacity>
           </View>
-          </SafeAreaView>
+        
     </>
     
   );

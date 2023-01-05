@@ -5,14 +5,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from "./HomeScreen"
-import FeedScreen from "./FeedScreen"
 import Login from "./Login"
 import { StyleSheet} from 'react-native';
 import PieChart from './MoodPieChart';
 import SettingsScreen from './SettingsScreen';
 import MoodPieChart from './MoodPieChart';
-import Happy from './Happy';
+import Good from './Good';
 import RegisterUserForm from './RegisterUserForm';
+import FeedScreen from './FeedScreen'
 
 
 function StackNavigator() {
@@ -43,8 +43,9 @@ const App = () => {
           options={{ title: 'Data' }}/>
         <Tab.Screen name="Settings" component={SettingsScreen} />  
         <Tab.Screen name="Login" component={Login} options={{ tabBarVisible: false }}/>
-        <Tab.Screen name="Happy" component={Happy}/>
+        <Tab.Screen name="Good" component={Good}/>
         <Tab.Screen name="RegisterUserForm" component={RegisterUserForm}/>
+        <Tab.Screen name="FeedScreen" component={FeedScreen}/>
         
         </Tab.Navigator>
     </NavigationContainer>

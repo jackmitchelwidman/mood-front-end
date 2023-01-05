@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import Header from './Header';
 import axios from 'axios';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 
 async function register(userName, firstName, lastName,email, password, joined, navigation) {
@@ -49,9 +50,8 @@ const [firstName, setFirstName] = useState('');
 
     return (
         <>
-       <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}}/>
-      <Header/>
-            
+       <Header/>
+       <KeyboardAwareScrollView style={{backgroundColor: 'white'}}>
       <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
       
       <TextInput
@@ -90,9 +90,8 @@ const [firstName, setFirstName] = useState('');
       />
       <Button title="Register" onPress={() => register('mood', firstName, lastName, email, password, now, navigation)} style={{marginTop: '30px'}}/>
     </View>
-    <View>
-      <Button title="logout" onPress={() => logout(navigation)}/>
-    </View>
+    
+    </KeyboardAwareScrollView>
    
         
         </>

@@ -34,8 +34,7 @@ const pieData = [
 function MoodPieChart() {
     return (
       <>
-      <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}} />
-        <Header/>
+      <Header/>
        
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       <PieChart

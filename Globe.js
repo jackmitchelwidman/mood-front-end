@@ -16,11 +16,7 @@ function Globe() {
       
     return (
         <>
-        <View>
-        <StatusBar barStyle="light-content" />
-        <Text style={styles.title}>MOOD</Text>
-        <Text style={styles.question}>How do you feel?</Text>
-        </View>
+        <Header/>
       <Canvas lights={[ { type: 'ambient', color: '#fff' },
       { type: 'point', color: '#fff', intensity: 1, position: [-10, 0, 10] },
       { type: 'point', color: '#fff', intensity: 1, position: [0, 10, 0] },]}>

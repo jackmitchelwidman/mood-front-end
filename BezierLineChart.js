@@ -5,9 +5,7 @@ import { LineChart } from 'react-native-chart-kit';
 function BezierLineChart() {
     return (
       <>
-      <StatusBar barStyle="light-content" />
-        <Text style={styles.title}>MOOD</Text>
-        <Text style={styles.question}>How do you feel?</Text>
+      <Header />
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       
   <LineChart
