@@ -57,27 +57,51 @@ const Good = () => {
       <SafeAreaView style={styles.container}>
       
         <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBasic} onPress={() => createMood('Ecstatic', email, 'This is a description', 255, 100, 30, now, navigation)}>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => {
+            const colors = getDefaultColorFromMood('excellent')
+            createMood('excellent', email, 'This is a description', colors[0], colors[1], colors[2], now, navigation)
+            }
+          }>
           <Text style={styles.buttontext}>excellent</Text>
         </TouchableOpacity>
         
-          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Globe')}>
+        <TouchableOpacity style={styles.buttonBasic} onPress={() => {
+            const colors = getDefaultColorFromMood('joyful')
+            createMood('joyful', email, 'This is a description', colors[0], colors[1], colors[2], now, navigation)
+            }
+          }>
           <Text style={styles.buttontext}>joyful</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonBasic}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonBasic} onPress={() => {
+            const colors = getDefaultColorFromMood('excited')
+            createMood('excited', email, 'This is a description', colors[0], colors[1], colors[2], now, navigation)
+            }
+          }>
           <Text style={styles.buttontext}>excited</Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
           </View>
           <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('BezierLineChart')}>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => {
+            const colors = getDefaultColorFromMood('content')
+            createMood('content', email, 'This is a description', colors[0], colors[1], colors[2], now, navigation)
+            }
+          }>
           <Text style={styles.buttontext}>content</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonBasic}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonBasic} onPress={() => {
+            const colors = getDefaultColorFromMood('grateful')
+            createMood('grateful', email, 'This is a description', colors[0], colors[1], colors[2], now, navigation)
+            }
+          }>
           <Text style={styles.buttontext}>grateful</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonBasic}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonBasic} onPress={() => {
+            const colors = getDefaultColorFromMood('playful')
+            createMood('playful', email, 'This is a description', colors[0], colors[1], colors[2], now, navigation)
+            }
+          }>
           <Text style={styles.buttontext}>playful</Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
           
         </View>
       </SafeAreaView>
