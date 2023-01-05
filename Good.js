@@ -3,9 +3,9 @@ import {TouchableOpacity, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Header from './Header'
-
-
-
+import createMood from './CreateMood';
+import { useState } from 'react';
+import getUserSessionValue from './SecurityCheck';
 
 import {
   SafeAreaView,
@@ -32,43 +32,50 @@ async function checkUserLogin(n) {
   }).catch(error => console.log(error));
 }
 
-const Happy = () => {
+const Good = () => {
 
-  const navigation = useNavigation();  
-
-  checkUserLogin(navigation)
+  const navigation = useNavigation();
+  const [email, setEmail] = useState('');
   
-
+  getUserSessionValue().then(value => setEmail(value));
+  
+  var isoString = new Date().toISOString();
+  
+  const year = isoString.substring(0, 4);
+  const month = isoString.substring(5, 7);
+  const day = isoString.substring(8, 10);
+  const time = isoString.substring(11, 19);
+  
+  var now = year + "-" + month + "-" + day + " " + time;
+  
   return (
     <>
-      <StatusBar barStyle="light-content" />
+      
       <Header/>
       
       <SafeAreaView style={styles.container}>
       
         <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBasic} onPress={() => logout(navigation)}>
-          
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => createMood('Ecstatic', email, 'This is a description', 255, 100, 30, now, navigation)}>
+          <Text style={styles.buttontext}>ecstatic</Text>
         </TouchableOpacity>
         
           <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Globe')}>
-          
-          
-          
+          <Text style={styles.buttontext}>joyful</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonBasic}>
-          
+          <Text style={styles.buttontext}>excited</Text>
           </TouchableOpacity>
           </View>
           <View style={styles.parent}>
           <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('BezierLineChart')}>
-          
+          <Text style={styles.buttontext}>content</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonBasic}>
-          
+          <Text style={styles.buttontext}>grateful</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonBasic}>
-          
+          <Text style={styles.buttontext}>playful</Text>
           </TouchableOpacity>
           
         </View>
@@ -114,16 +121,12 @@ question: {
 },
 
 buttontext: {
-  color: 'black',
+  color: 'black5',
   fontWeight: 'bold',
   fontSize: 20,
   borderWidth:  0 ,
-  
-  
-  
-  
-  
-  
+  marginTop: 5,
+  marginBottom: 5,
 },
   buttonBasic: {
     borderRadius: 110,
@@ -136,14 +139,11 @@ buttontext: {
     shadowOffset: { width: 3, height: 3},
     shadowOpacity: 0.5,
     marginTop: 10,
-   
-    
-    
-    
-  },
-
-  
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+   },
 });
 
 
-export default Happy;
+export default Good;

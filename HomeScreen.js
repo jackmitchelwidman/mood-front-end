@@ -43,7 +43,7 @@ const HomeScreen = () => {
       <SafeAreaView style={styles.container}>
       
         <View style={styles.parent}>
-          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Happy')}>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Good')}>
           <Image source={require('./assets/good.png')} style={{ width: '100%', height:'100%'}} />
         </TouchableOpacity>
         
