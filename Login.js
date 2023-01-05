@@ -45,7 +45,7 @@ const Login = () => {
       <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}}/>
       <Header/>
      
-      <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ backgroundColor: 'white', justifyContent: 'in-between', alignItems: 'center' }}>
       <TextInput
         placeholder="email"
         value={email}
@@ -63,6 +63,8 @@ const Login = () => {
       
       
       <Button title="Login" onPress={() => login(email,password, navigation).then().catch(error => console.log(error))} style={{marginTop: 30}}/>
+      
+      <Button title="Register" onPress={() => navigation.navigate('RegisterUserForm')} style={{marginTop: 30}}/>
     </View>
     </>
     );

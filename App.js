@@ -11,7 +11,8 @@ import { StyleSheet} from 'react-native';
 import PieChart from './MoodPieChart';
 import SettingsScreen from './SettingsScreen';
 import MoodPieChart from './MoodPieChart';
-import Happy from './Happy'
+import Happy from './Happy';
+import RegisterUserForm from './RegisterUserForm';
 
 
 function StackNavigator() {
@@ -43,6 +44,8 @@ const App = () => {
         <Tab.Screen name="Settings" component={SettingsScreen} />  
         <Tab.Screen name="Login" component={Login} options={{ tabBarVisible: false }}/>
         <Tab.Screen name="Happy" component={Happy}/>
+        <Tab.Screen name="RegisterUserForm" component={RegisterUserForm}/>
+        
         </Tab.Navigator>
     </NavigationContainer>
   );

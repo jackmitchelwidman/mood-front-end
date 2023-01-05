@@ -5,7 +5,7 @@ const Header = () => {
 
 return (
 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
-    <Image source={require('./assets/moodlogo.png')} style={{ width: '100%', height:'40%'}} />
+    <Image source={require('./assets/moodlogo.png')} cache={true} style={{ width: '100%', height:'40%'}} />
 
     <Text style={styles.question}>How do you feel?</Text>
 </View>
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         color: 'grey',
         fontSize: 40,
         backgroundColor: "white",
-        marginTop: 20,
+        marginTop: 0,
       },
 })
 
