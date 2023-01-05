@@ -6,6 +6,7 @@ import Header from './Header'
 import createMood from './CreateMood';
 import { useState } from 'react';
 import getUserSessionValue from './SecurityCheck';
+import getDefaultColorFromMood from './DefaultColors';
 
 import {
   SafeAreaView,
@@ -57,7 +58,7 @@ const Good = () => {
       
         <View style={styles.parent}>
           <TouchableOpacity style={styles.buttonBasic} onPress={() => createMood('Ecstatic', email, 'This is a description', 255, 100, 30, now, navigation)}>
-          <Text style={styles.buttontext}>ecstatic</Text>
+          <Text style={styles.buttontext}>excellent</Text>
         </TouchableOpacity>
         
           <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Globe')}>
