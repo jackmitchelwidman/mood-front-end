@@ -1,8 +1,10 @@
-import {View, StatusBar, TextInput, StyleSheet, Button} from 'react-native';
+import {View, SafeAreaView, StatusBar, TextInput, StyleSheet, Button} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import Header from './Header';
 import axios from 'axios';
+import styles from './MoodStyles';
+import logout from './HomeScreen';
 
 
 async function register(userName, firstName, lastName,email, password, joined, navigation) {
@@ -51,26 +53,26 @@ const [firstName, setFirstName] = useState('');
         <>
        <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}}/>
       <Header/>
-            
-      <View style={{ backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+      <SafeAreaView style={styles.container}>
+      <View style={styles.inputboxes_container}>
       
       <TextInput
         placeholder="First Name"
         value={firstName}
         onChangeText={setFirstName}
-        style={styles.email}
+        style={styles.password}
       />
       <TextInput
         placeholder="Last Name"
         value={lastName}
         onChangeText={setLastName}
-        style={styles.email}
+        style={styles.password}
       />
       <TextInput
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        style={styles.email}
+        style={styles.password}
       />
       
       <TextInput
@@ -88,93 +90,12 @@ const [firstName, setFirstName] = useState('');
         onChangeText={setConfirmPassword}
         style={styles.password}
       />
-      <Button title="Register" onPress={() => register('mood', firstName, lastName, email, password, now, navigation)} style={{marginTop: '30px'}}/>
-    </View>
-    <View>
-      <Button title="logout" onPress={() => logout(navigation)}/>
-    </View>
-   
-        
-        </>
+       <Button title="Register" onPress={() => register('mood', firstName, lastName, email, password, now, navigation)} style={{marginTop: '30px'}}/>
+     </View>
+    </SafeAreaView>   
+  </>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems:'center',
-        borderWidth: 0,
-        fontSize: 60,
-        backgroundColor: "white",
-        flexDirection: "column",
-        justifyContent: "center",
-        },
-        
-      parent: {
-        borderWidth: 1,
-        borderColor: "#00BFFF",
-        flex: 1,
-        alignItems: 'center'
-      
-      },
-      title: {
-        textAlign: 'center',
-        color: '#00BFFF',
-        fontSize: 100,
-        backgroundColor: "white",
-      },
-      
-      question: {
-        textAlign: 'center',
-        color: 'grey',
-        fontSize: 40,
-        backgroundColor: "white",
-      },
-      buttonText: {
-        color: '#00BFFF',
-        fontWeight: 'bold',
-        fontSize: 20,
-        borderWidth:  0 ,
-    },
-    password: {
-        color: '#00BFFF',
-        fontWeight: 'bold',
-        fontSize: 20,
-        borderWidth:  1 ,
-        borderColor: 'lightgrey',
-        width: "80%",
-        height: 40,
-        marginTop: 5
-    },
-  
-    email: {
-      color: '#00BFFF',
-      fontWeight: 'bold',
-      fontSize: 20,
-      borderWidth:  1 ,
-      borderColor: 'lightgrey',
-      width: "80%",
-      height: 40,
-      marginTop: 5, 
-  },
-      
-   
-       buttonCircular: {
-        borderRadius: 100,
-        borderColor: "lightgrey",
-        borderWidth: 2,
-        backgroundColor: "white",
-        width: 100,
-        height: 100,
-        margin: 20,
-        shadowColor: 'black',
-        shadowOffset: { width: 3, height: 3},
-        shadowOpacity: 0.5,
-        
-        
-      },
-  });
-    
 export default RegisterUserForm;
 
 

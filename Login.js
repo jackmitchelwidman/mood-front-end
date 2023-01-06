@@ -1,15 +1,15 @@
 import React from 'react';
-import {SafeAreaView, View, TextInput, Text, Alert} from 'react-native';
+import {Button, View, TextInput, Text, Alert, SafeAreaView} from 'react-native';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Button } from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {
   StatusBar,
   StyleSheet,
  } from 'react-native';
 import axios from 'axios';
-import Header from './Header'
+import Header from './Header';
+import styles from './MoodStyles';
 
 
 
@@ -44,13 +44,13 @@ const Login = () => {
     <>
       <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}}/>
       <Header/>
-     
-      <View style={{ backgroundColor: 'white', justifyContent: 'in-between', alignItems: 'center' }}>
+     <SafeAreaView style={styles.container}>
+      <View style={styles.inputboxes_container}>
       <TextInput
         placeholder="email"
         value={email}
         onChangeText={setEmail}
-        style={styles.email}
+        style={styles.password}
       />
       
       <TextInput
@@ -66,88 +66,11 @@ const Login = () => {
       
       <Button title="Register" onPress={() => navigation.navigate('RegisterUserForm')} style={{marginTop: 30}}/>
     </View>
+    </SafeAreaView>
     </>
     );
   
 
 };
   
-
-const styles = StyleSheet.create({
-  container: {
-      flex: 1,
-      alignItems:'center',
-      borderWidth: 0,
-      fontSize: 60,
-      backgroundColor: "white",
-      flexDirection: "column",
-      justifyContent: "center",
-      },
-      
-    parent: {
-      borderWidth: 1,
-      borderColor: "#00BFFF",
-      flex: 1,
-      alignItems: 'center'
-    
-    },
-    title: {
-      textAlign: 'center',
-      color: '#00BFFF',
-      fontSize: 100,
-      backgroundColor: "white",
-    },
-    
-    question: {
-      textAlign: 'center',
-      color: 'grey',
-      fontSize: 40,
-      backgroundColor: "white",
-    },
-    buttonText: {
-      color: '#00BFFF',
-      fontWeight: 'bold',
-      fontSize: 20,
-      borderWidth:  0 ,
-  },
-  password: {
-      color: '#00BFFF',
-      fontWeight: 'bold',
-      fontSize: 20,
-      borderWidth:  1 ,
-      borderColor: 'lightgrey',
-      width: "80%",
-      height: 40,
-      marginTop: 30 
-  },
-
-  email: {
-    color: '#00BFFF',
-    fontWeight: 'bold',
-    fontSize: 20,
-    borderWidth:  1 ,
-    borderColor: 'lightgrey',
-    width: "80%",
-    height: 40,
-    marginTop: '60%', 
-},
-    
- 
-     buttonCircular: {
-      borderRadius: 100,
-      borderColor: "lightgrey",
-      borderWidth: 2,
-      backgroundColor: "white",
-      width: 100,
-      height: 100,
-      margin: 20,
-      shadowColor: 'black',
-      shadowOffset: { width: 3, height: 3},
-      shadowOpacity: 0.5,
-      
-      
-    },
-});
-  
-
 export default Login;
