@@ -6,6 +6,8 @@ import axios from 'axios';
 import Header from './Header';
 import getUserSessionValue from './SecurityCheck';
 import styles from './MoodStyles';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 
 async function resetPassword(email, password, navigation) {
   const url = 'http://feel-databytes.herokuapp.com/encryptpassword';
@@ -36,9 +38,11 @@ async function resetPassword(email, password, navigation) {
   return (
       <>
       <StatusBar barStyle="light-content" />
-     <Header /> 
       
+     <Header /> 
+     <KeyboardAwareScrollView style={{backgroundColor: 'white'}}> 
       <SafeAreaView style={styles.container}>
+      
       <View style={styles.inputboxes_container}>
       <TextInput
         secureTextEntry
@@ -60,7 +64,11 @@ async function resetPassword(email, password, navigation) {
       <Button title="logout" onPress={() => logout(navigation)}/>
       </View>
     </View>
+    
       </SafeAreaView>
+      
+      </KeyboardAwareScrollView>
+      
       </>
     );
 };

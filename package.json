@@ -32,6 +32,7 @@
     "react-native-color-picker": "^0.6.0",
     "react-native-complete-flatlist": "^2.0.14",
     "react-native-elements": "^3.4.3",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-login-screen": "^4.2.0",
     "react-native-mmkv-storage": "^0.8.0",
     "react-native-paper": "^5.1.2",

@@ -10,6 +10,7 @@ import {
 import axios from 'axios';
 import Header from './Header';
 import styles from './MoodStyles';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
 
@@ -44,6 +45,7 @@ const Login = () => {
     <>
       <StatusBar barStyle="light-content" style={{backgroundColor: 'white'}}/>
       <Header/>
+      <KeyboardAwareScrollView style={{backgroundColor: 'white'}}>
      <SafeAreaView style={styles.container}>
       <View style={styles.inputboxes_container}>
       <TextInput
@@ -67,6 +69,7 @@ const Login = () => {
       <Button title="Register" onPress={() => navigation.navigate('RegisterUserForm')} style={{marginTop: 30}}/>
     </View>
     </SafeAreaView>
+    </KeyboardAwareScrollView>
     </>
     );
   
