@@ -1,11 +1,12 @@
-import {TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import getDefaultColorFromMood from './DefaultColors';
+import createMood from './CreateMood';
 
-const Mood = (mood) => {
+const Mood = ({mood, email, created, navigation}) => {
     return (
         <TouchableOpacity style={styles.buttonBasic} onPress={() => {
             const colors = getDefaultColorFromMood(mood)
-            createMood(mood, email, 'This is a description', colors[0], colors[1], colors[2], now, navigation)
+            createMood(mood, email, 'This is a description', colors[0], colors[1], colors[2], created, navigation)
             }
           }>
           <Text style={styles.buttontext}>{mood}</Text>

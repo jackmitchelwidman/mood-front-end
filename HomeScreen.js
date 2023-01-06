@@ -47,12 +47,12 @@ const HomeScreen = () => {
           <Image source={require('./assets/good.png')} style={{ width: '100%', height:'100%'}} />
         </TouchableOpacity>
         
-          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('FeedScreen')}>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Neutral')}>
           <Image source={require('./assets/neutral.png')} style={{ width: '100%', height:'100%'}} />
           </TouchableOpacity>
           
           
-          <TouchableOpacity style={styles.buttonBasic}>
+          <TouchableOpacity style={styles.buttonBasic} onPress={() => navigation.navigate('Bad')}>
           <Image source={require('./assets/bad.png')} style={{ width: '100%', height:'100%'}} />
           </TouchableOpacity>
           </View>

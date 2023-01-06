@@ -12,6 +12,8 @@ import PieChart from './MoodPieChart';
 import SettingsScreen from './SettingsScreen';
 import MoodPieChart from './MoodPieChart';
 import Good from './Good';
+import Neutral from './Neutral';
+import Bad from './Bad';
 import RegisterUserForm from './RegisterUserForm';
 
 
@@ -44,6 +46,8 @@ const App = () => {
         <Tab.Screen name="Settings" component={SettingsScreen} />  
         <Tab.Screen name="Login" component={Login} options={{ tabBarVisible: false }}/>
         <Tab.Screen name="Good" component={Good}/>
+        <Tab.Screen name="Bad" component={Bad}/>
+        <Tab.Screen name="Neutral" component={Neutral}/>
         <Tab.Screen name="RegisterUserForm" component={RegisterUserForm}/>
         <Tab.Screen name="FeedScreen" component={FeedScreen}/>
         

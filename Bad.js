@@ -1,12 +1,9 @@
 import React from 'react';
-import {TouchableOpacity, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Header from './Header'
-import createMood from './CreateMood';
 import { useState } from 'react';
 import getUserSessionValue from './SecurityCheck';
-import getDefaultColorFromMood from './DefaultColors';
 import Mood from './Mood';
 
 import {
@@ -14,8 +11,6 @@ import {
   StatusBar,
   StyleSheet,
   View,
-  //Button,
-  Alert,
 } from 'react-native';
 
 async function logout(n) {
@@ -34,7 +29,7 @@ async function checkUserLogin(n) {
   }).catch(error => console.log(error));
 }
 
-const Good = () => {
+const Bad = () => {
 
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -58,14 +53,14 @@ const Good = () => {
       <SafeAreaView style={styles.container}>
       
         <View style={styles.parent}>
-          <Mood mood={'excellent'} email={email} created={now} navigation={navigation} />
-          <Mood mood={'joyful'} email={email} created={now} navigation={navigation} />
-          <Mood mood={'excited'} email={email} created={now} navigation={navigation} />
+          <Mood mood={'depressed'} email={email} created={now} navigation={navigation} />
+          <Mood mood={'hopeless'} email={email} created={now} navigation={navigation} />
+          <Mood mood={'angry'} email={email} created={now} navigation={navigation} />
           </View>
           <View style={styles.parent}>
-          <Mood mood={'content'} email={email} created={now} navigation={navigation} />
-          <Mood mood={'grateful'} email={email} created={now} navigation={navigation} />
-          <Mood mood={'playful'} email={email} created={now} navigation={navigation} />
+          <Mood mood={'unhappy'} email={email} created={now} navigation={navigation} />
+          <Mood mood={'lonely'} email={email} created={now} navigation={navigation} />
+          <Mood mood={'melancholy'} email={email} created={now} navigation={navigation} />
           
         </View>
       </SafeAreaView>
@@ -135,4 +130,4 @@ buttontext: {
 });
 
 
-export default Good;
+export default Bad;
