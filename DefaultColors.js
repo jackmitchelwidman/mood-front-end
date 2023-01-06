@@ -1,12 +1,12 @@
 
 function getDefaultColorFromMood(mood)  {
     var colors = {}
-    colors['excellent'] = [0,0,255];
-    colors['joyful'] = [0,128,255];
-    colors['excited'] = [127,0,255];
-    colors['content'] = [102,178,255];
-    colors['grateful'] = [51,51,255];
-    colors['playful'] = [0,255,255];
+    colors['excellent'] = [255,255,0];
+    colors['joyful'] = [255,255,51];
+    colors['excited'] = [255,69,0];
+    colors['content'] = [255,165,0];
+    colors['grateful'] = [255,99,71];
+    colors['playful'] = [255,127,80];
 
     return colors[mood];
 }

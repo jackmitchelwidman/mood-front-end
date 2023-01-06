@@ -18,6 +18,7 @@ import 'moment-timezone';
 const FeedScreen = () => {
 
     const [data, setData] = useState(null);
+    const [load, setLoad] = useState(false)
 
     useEffect(() => {
       async function fetchData() {
@@ -48,15 +49,14 @@ const FeedScreen = () => {
 
       return (
       <View style={styles.list}>
-        <RoundButton style={styles.column} title={''} moodColor={moodColor} showSearch={true} isJelly={true} />
-        <Image style={styles.column} source={require('./assets/jack.jpg')} resizeMode={"contain"} cache={true} style={{ width: 50, height:50}} />
-        <Text style={styles.column} style={[{ fontSize: 26, marginRight: 20 }]}>{item.word}</Text>
+        <Image style={styles.column} source={require('./assets/jack.jpg')} resizeMode={"contain"} cache={true} style={{ width: 50, height:50, borderRadius: 50, borderWidth: 8, borderColor: moodColor}} />
+        <Text style={styles.column} style={[{ fontColor: moodColor, fontSize: 26, marginRight: 20 }]}>{item.word}</Text>
         <Text style={styles.column}>{created}</Text>
         
       </View>
       );
     };
-  
+  25
     return (
       <>
       <Header/>
@@ -67,7 +67,7 @@ const FeedScreen = () => {
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        pullToRefreshCallback={() => fetchData()}
+        pullToRefreshCallback={() => setLoad(true)}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
        />
       
@@ -90,7 +90,7 @@ const FeedScreen = () => {
     },
 
     column : {
-      flexBasis: '25.00%',
+      flexBasis: '33.33%',
       textAlign:'left'
     },
 
