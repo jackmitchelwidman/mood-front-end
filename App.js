@@ -15,13 +15,14 @@ import Good from './Good';
 import Neutral from './Neutral';
 import Bad from './Bad';
 import RegisterUserForm from './RegisterUserForm';
+import Profile from './Profile';
 
 
 function StackNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Profile" component={PieChart} />
+      <Stack.Screen name="PieChart" component={PieChart} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
@@ -50,6 +51,7 @@ const App = () => {
         <Tab.Screen name="Neutral" component={Neutral}/>
         <Tab.Screen name="RegisterUserForm" component={RegisterUserForm}/>
         <Tab.Screen name="FeedScreen" component={FeedScreen}/>
+        <Tab.Screen name="Profile" component={Profile}/>
         
         </Tab.Navigator>
     </NavigationContainer>

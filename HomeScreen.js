@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, Image, StatusBar} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {  useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './Header';
 import styles from './MoodStyles';

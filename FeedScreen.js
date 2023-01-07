@@ -1,8 +1,8 @@
 import React, {useRef} from 'react';
 import { Text, SafeAreaView, Image, Alert} from 'react-native';
 import CompleteFlatList from 'react-native-complete-flatlist';
-import {View, FlatList } from 'react-native';
-
+import {View, FlatList, TouchableOpacity } from 'react-native';
+import {  useNavigation } from '@react-navigation/native';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
@@ -11,12 +11,16 @@ import moment from 'moment';
 import 'moment-timezone';
 import { StatusBar } from 'expo-status-bar';
 import styles from './MoodStyles';
+import { NavigationContainer } from '@react-navigation/native';
+import avatar from './ImageManager';
+
 
 const FeedScreen = () => {
 
     const [data, setData] = useState(null);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
+    const navigation = useNavigation();
     
     async function fetchData(page, pageSize) {
       try {
@@ -39,7 +43,7 @@ const FeedScreen = () => {
     const loadMore = async () => {
       if (loading) return;
       setLoading(true);
-      fetchData(page,10)
+      fetchData(1,10)
       //setPage(page + 1);
       setLoading(false);
     }
@@ -50,15 +54,16 @@ const FeedScreen = () => {
         const timezone = '';
         const formattedDate = moment.tz(item.created, timezone).format(); 
         const created = moment(formattedDate).fromNow();
+        const imgSrc = avatar() + 'jack.jpeg';
 
 
       return (
-      <View style={styles.list}>
-        <Image style={styles.column} source={require('./assets/jack.jpg')} resizeMode={"contain"} cache={'force-cache'} style={{ width: 50, height:50, borderRadius: 50, borderWidth: 8, borderColor: moodColor}} />
+      <TouchableOpacity style={styles.list} onPress={() => navigation.navigate('Profile', {item: item})}>
+        <Image style={styles.column} source={{ uri: imgSrc }} resizeMode={"contain"} cache={'force-cache'} style={{ width: 50, height:50, borderRadius: 50, borderWidth: 8, borderColor: moodColor}} />
         <Text style={styles.column} style={[{ fontColor: moodColor, fontSize: 26, marginRight: 20 }]}>{item.word}</Text>
         <Text style={styles.column}>{created}</Text>
         
-      </View>
+      </TouchableOpacity>
       );
     };
   25
