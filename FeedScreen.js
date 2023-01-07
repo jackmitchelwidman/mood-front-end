@@ -54,7 +54,8 @@ const FeedScreen = () => {
         const timezone = '';
         const formattedDate = moment.tz(item.created, timezone).format(); 
         const created = moment(formattedDate).fromNow();
-        const imgSrc = avatar() + 'jack.jpeg';
+        const imgSrc = avatar() + item.email + '.jpg';
+        console.log('imgSrc: ' + imgSrc);
 
 
       return (

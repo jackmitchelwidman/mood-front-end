@@ -63,7 +63,7 @@ const Profile = ({route}) => {
 
   checkUserLogin(navigation)
 
-  const imgSrc = avatar() + 'jack.jpeg'
+  const imgSrc = avatar() + item.email + '.jpg';
   console.log('imgSrc=' + imgSrc);
   
 
