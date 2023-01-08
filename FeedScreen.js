@@ -55,9 +55,7 @@ const FeedScreen = () => {
         const formattedDate = moment.tz(item.created, timezone).format(); 
         const created = moment(formattedDate).fromNow();
         const imgSrc = avatar() + item.email + '.jpg';
-        console.log('imgSrc: ' + imgSrc);
-
-
+        
       return (
       <TouchableOpacity style={styles.list} onPress={() => navigation.navigate('Profile', {item: item})}>
         <Image style={styles.column} source={{ uri: imgSrc }} resizeMode={"contain"} cache={'force-cache'} style={{ width: 50, height:50, borderRadius: 50, borderWidth: 8, borderColor: moodColor}} />

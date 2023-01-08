@@ -1,21 +1,32 @@
-// mood = {wprd. email, description, red, green, blue, created}
+import color from 'color';
 
-//Here, moods is an array of mood objects
 const getAverageRed = (moods) => {
-    (moods.map(m => m.red).reduce((m,n) => m+n))/moods.length
+    const n = Math.round((moods.map(m => m.red).reduce((m,n) => m+n))/moods.length);
+    console.log('red: ' + n);
+    return n;
 }
 
 const getAverageGreen= (moods) => {
-    (moods.map(m => m.green).reduce((m,n) => m+n))/moods.length
+    return Math.round((moods.map(m => m.green).reduce((m,n) => m+n))/moods.length);
 }
 
 const getAverageBlue = (moods) => {
-    (moods.map(m => m.blue).reduce((m,n) => m+n))/moods.length
+    return Math.round((moods.map(m => m.blue).reduce((m,n) => m+n))/moods.length);
 }
 
 const getAverageColor = (moods) => {
-    return [getAverageRed(moods), getAverageGreen(moods), getAverageBlue(moods)];
+    console.log('Inside getAverageColor. moods.length=' + moods.length);
+    const result = [getAverageRed(moods), getAverageGreen(moods), getAverageBlue(moods)];
+    console.log('returning: ' + result);
+    return result;
 }
+
+export const convertToHex = (rgb) => {
+    const rgbColor = 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+    const hexColor = color(rgbColor).hex().toString(); 
+    return hexColor;
+}
+
 
 export default getAverageColor;
 
