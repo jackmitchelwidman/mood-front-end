@@ -14,7 +14,7 @@ const getAverageBlue = (moods) => {
     return Math.round((moods.map(m => m.blue).reduce((m,n) => m+n))/moods.length);
 }
 
-const getAverageColor = (moods) => {
+export const getAverageColor = (moods) => {
     console.log('Inside getAverageColor. moods.length=' + moods.length);
     const result = [getAverageRed(moods), getAverageGreen(moods), getAverageBlue(moods)];
     console.log('returning: ' + result);
@@ -27,7 +27,15 @@ export const convertToHex = (rgb) => {
     return hexColor;
 }
 
-
+export const wordCount = (moods) =>  {
+    const counts = {};
+    const words = moods.map(mood => mood.word);
+    for (let w of words) {
+        const c = moods.filter(function(mood) { return (mood.word==w)}).length;
+        counts[w] = c;
+    }
+    return counts;
+  }
 export default getAverageColor;
 
 

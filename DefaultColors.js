@@ -24,7 +24,7 @@ function getDefaultColorFromMood(mood)  {
 
 
 
-    return colors[mood];
+    return colors[mood.word];
 }
 
 export default getDefaultColorFromMood;

@@ -58,14 +58,14 @@ const Good = () => {
       <SafeAreaView style={styles.container}>
       
         <View style={styles.parent}>
-          <Mood mood={'excellent'} email={email} created={now} navigation={navigation} />
-          <Mood mood={'joyful'} email={email} created={now} navigation={navigation} />
-          <Mood mood={'excited'} email={email} created={now} navigation={navigation} />
+          <Mood word={'excellent'} email={email} created={now} navigation={navigation} />
+          <Mood word={'joyful'} email={email} created={now} navigation={navigation} />
+          <Mood word={'excited'} email={email} created={now} navigation={navigation} />
           </View>
           <View style={styles.parent}>
-          <Mood mood={'content'} email={email} created={now} navigation={navigation} />
-          <Mood mood={'grateful'} email={email} created={now} navigation={navigation} />
-          <Mood mood={'playful'} email={email} created={now} navigation={navigation} />
+          <Mood word={'content'} email={email} created={now} navigation={navigation} />
+          <Mood word={'grateful'} email={email} created={now} navigation={navigation} />
+          <Mood word={'playful'} email={email} created={now} navigation={navigation} />
           
         </View>
       </SafeAreaView>
