@@ -7,6 +7,7 @@ import styles from './MoodStyles';
 import color from 'color';
 import { PieChart } from 'react-native-chart-kit';
 import avatar from './ImageManager';
+import getAverageColor from './MoodDataUtils';
 
 const pieData = [
     {
