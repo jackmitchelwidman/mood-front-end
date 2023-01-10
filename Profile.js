@@ -12,6 +12,9 @@ import {useIsFocused} from '@react-navigation/native';
 import axios from 'axios';
 import {getAverageColor, convertToHex, wordCount } from './MoodDataUtils';
 import getDefaultColorFromMood from './DefaultColors';
+import Canvas from 'react-native-canvas';
+import { useRef } from 'react';
+import Svg, {Circle,Defs,RadialGradient, Stop} from 'react-native-svg';
 
 
 const pieData2 = [
@@ -91,6 +94,8 @@ async function checkUserLogin(n) {
   }).catch(error => console.log(error));
 }
 
+
+
 const Profile = ({route}) => {
 
     const { item } = route.params;
@@ -105,6 +110,15 @@ const Profile = ({route}) => {
   checkUserLogin(navigation)
 
   const imgSrc = avatar() + item.email + '.jpg';
+
+  ////////////////////////////////////////////////////////////////
+
+ const showMoodRing = (canvas) => {
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'purple';
+    ctx.fillRect(0, 0, 100, 100);
+  }
+ /////////////////////////////////////////////////////
 
   async function fetchData() {
     try {
@@ -134,29 +148,40 @@ const Profile = ({route}) => {
       fetchData();
     }
   }, [isFocused]);
-  
 
   return (
     <>
       <StatusBar barStyle="light-content" />
       <Header />
-      <SafeAreaView style={{backgroundColor: 'white'}}>
-        <Image style={styles.column} source={{ uri: imgSrc }} resizeMode={"contain"} cache={'force-cache'} style={{ width: 150, height:150, borderRadius: 150, borderWidth: 8, borderColor: moodColor}} />
-        <PieChart
-            data={pie}  
-            width={Dimensions.get('window').width}
-            height={Dimensions.get('window').height/2}
-            chartConfig={{
-                color: (opacity = 3) => `rgba(255, 255, 255, ${opacity})`
-            }}
-            accessor="count"
-            backgroundColor="transparent"
-            paddingLeft={Dimensions.get('window').width/4}
-            hasLegend={false}
-            absolute
-            
-            />
-      </SafeAreaView>
+      <SafeAreaView style={styles.container}>
+       
+        <Svg height="300" width="300">
+  <Defs>
+    <RadialGradient
+      id="grad"
+      cx="150"
+      cy="75"
+      rx="85"
+      ry="155"
+      fx="150"
+      fy="15"
+      gradientUnits="userSpaceOnUse"
+    >
+      <Stop offset="10%" stopColor="white" stopOpacity="1" />
+      <Stop offset="20%" stopColor="red" stopOpacity="1" />
+      <Stop offset="30%" stopColor="blue" stopOpacity="1" />
+      <Stop offset="40%" stopColor="green" stopOpacity="1" />
+      <Stop offset="50%" stopColor="pink" stopOpacity="1" />
+      <Stop offset="60%" stopColor="purple" stopOpacity="1" />
+      <Stop offset="70%" stopColor="yellow" stopOpacity="1" />
+      <Stop offset="80%" stopColor="green" stopOpacity="1" />
+    </RadialGradient>
+  </Defs>
+  <Circle  width={200} height={200} cx="150" cy="75" r="75" fill="url(#grad)" />
+</Svg>
+
+
+</SafeAreaView>
     </>
     
   );

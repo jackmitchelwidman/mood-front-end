@@ -5,6 +5,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './Header';
 import styles from './MoodStyles';
 
+
+
+
 import {
   SafeAreaView,
   View,
@@ -26,12 +29,14 @@ async function checkUserLogin(n) {
   }).catch(error => console.log(error));
 }
 
+
+
 const HomeScreen = () => {
 
   const navigation = useNavigation();  
 
   checkUserLogin(navigation)
-  
+
 
   return (
     <>
