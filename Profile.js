@@ -183,18 +183,18 @@ const Profile = ({route}) => {
     <RadialGradient
       id="grad"
       cx="150"
-      cy="75"
-      rx="85"
-      ry="155"
+      cy="81"
+      rx="110"
+      ry="110"
       fx="150"
-      fy="15"
+      fy="65"
       gradientUnits="userSpaceOnUse"
     >
       <Stop offset="0" stopColor={color1} stopOpacity="1" />
       <Stop offset="0.1" stopColor={color2} stopOpacity="1" />
-      <Stop offset="0.3" stopColor={color3} stopOpacity="1" />
-      <Stop offset="0.5" stopColor={color4} stopOpacity="1" />
-      <Stop offset="0.7" stopColor={color5} stopOpacity=".5" />
+      <Stop offset="0.2" stopColor={color3} stopOpacity="1" />
+      <Stop offset="0.4" stopColor={color4} stopOpacity=".9" />
+      <Stop offset="0.5" stopColor={color5} stopOpacity="1" />
       <Stop offset="0.8" stopColor={color6} stopOpacity="1" />
       <Stop offset="0.9" stopColor={color7} stopOpacity="1" />
       <Stop offset="1" stopColor={color8} stopOpacity="1" />
