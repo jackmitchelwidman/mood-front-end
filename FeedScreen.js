@@ -31,18 +31,13 @@ const FeedScreen = () => {
     async function fetchData(page, pageSize) {
       
       try {
-        
         const url = 'http://feel-databytes.herokuapp.com/moods/' + page + '/' + pageSize;
-        
         const response = await axios.get(url);
         const newData = await response.data;
-
         if (newData.length == 0) return;
         
         const maxIdNew = Math.max.apply(null, newData.map(m=>m.id));
-        
-        if  (maxIdNew > currentMax) {
-         
+        if  (maxIdNew > currentMax) { 
           setData([...newData.filter(function(n) { 
             return (n.id > currentMax)
           }),...data])
@@ -59,10 +54,25 @@ const FeedScreen = () => {
     const loadMore = async () => {
       if (loading) return;
         setLoading(true);
-        console.log('Inside loadMore. About to call fetchData on page' + page)
-        fetchData(page+1,10)
-        setPage(page + 1);
-        setLoading(false);
+        try {
+          const url = 'http://feel-databytes.herokuapp.com/moods/' + page + '/' + 10;
+          const response = await axios.get(url);
+          const newData = await response.data;
+          if (newData.length == 0) {
+            setLoading(false)
+            return
+          }
+          
+          const maxIdNew = Math.max.apply(null, newData.map(m=>m.id));
+          setData([...data,...newData.filter(function(n) { 
+              return (n.id > currentMax)
+            })])
+            
+        } catch (error) {
+          console.error(error);
+        }
+        setPage(page + 1)
+        setLoading(false)
       }
 
    const renderItem = ({item}) => {
@@ -93,11 +103,11 @@ const FeedScreen = () => {
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        //onMomentumScrollEnd={loadMore}
+        onMomentumScrollEnd={loadMore}
         pullToRefreshCallback={() => fetchData(1,10)}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         onEndReachedThreshold={0.5}
-        ListFooterComponent={loading && <LoadingIndicator/> }
+        //ListFooterComponent={loading && <LoadingIndicator/> }
        />
       
     </SafeAreaView>
