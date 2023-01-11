@@ -61,7 +61,7 @@ const FeedScreen = () => {
           const response = await axios.get(url);
           const newData = await response.data;
           
-          setData([...data,...newData])
+          setData([...data,...newData.filter(function(m) {!(m.id in data.map(m => m.id))})])
             
         } catch (error) {
           console.error(error);
