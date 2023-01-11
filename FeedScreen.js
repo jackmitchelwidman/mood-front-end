@@ -13,6 +13,7 @@ import { StatusBar } from 'expo-status-bar';
 import styles from './MoodStyles';
 import { NavigationContainer } from '@react-navigation/native';
 import avatar from './ImageManager';
+import { useFocusEffect } from '@react-navigation/native';
 
 
 const FeedScreen = () => {
@@ -49,9 +50,16 @@ const FeedScreen = () => {
       }
     }
 
-    useEffect(() => { 
-      fetchData(1,10)
-    }, []);
+    
+
+useFocusEffect(
+  React.useCallback(() => {
+    fetchData(1,10);
+    return () => {
+      // cleanup
+    };
+  }, [])
+);
 
     const loadMore = async () => {
       if (loading) return;
