@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import { Text, SafeAreaView, Image, Alert} from 'react-native';
+import { Text, SafeAreaView, Image, ActivityIndicator} from 'react-native';
 import CompleteFlatList from 'react-native-complete-flatlist';
 import {View, FlatList, TouchableOpacity } from 'react-native';
 import {  useNavigation } from '@react-navigation/native';
@@ -20,8 +20,10 @@ const FeedScreen = () => {
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true)
     const [currentMax, setCurrentMax] = useState(-Infinity)
     const navigation = useNavigation();
+    
     
     useEffect(() => {
       const newCurrentMax = Math.max.apply(null, data.map(m => m.id))
@@ -55,18 +57,11 @@ const FeedScreen = () => {
       if (loading) return;
         setLoading(true);
         try {
-          const url = 'http://feel-databytes.herokuapp.com/moods/' + page + '/' + 10;
+          const url = 'http://feel-databytes.herokuapp.com/moods/' + (page + 1) + '/' + 10;
           const response = await axios.get(url);
           const newData = await response.data;
-          if (newData.length == 0) {
-            setLoading(false)
-            return
-          }
           
-          const maxIdNew = Math.max.apply(null, newData.map(m=>m.id));
-          setData([...data,...newData.filter(function(n) { 
-              return (n.id > currentMax)
-            })])
+          setData([...data,...newData])
             
         } catch (error) {
           console.error(error);
@@ -92,13 +87,13 @@ const FeedScreen = () => {
       </TouchableOpacity>
       );
     };
-  25
+  
     return (
       <>
       <StatusBar/>
       <Header/>
+      
       <SafeAreaView style={styles.container}>
-        
       <CompleteFlatList 
         data={data}
         renderItem={renderItem}

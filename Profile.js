@@ -92,7 +92,7 @@ const Profile = ({route}) => {
 
   async function fetchData() {
     try {
-      console.log('Inside fetchData()')
+      
       const url = 'http://feel-databytes.herokuapp.com/moodsforuserlastweek/' + item.email; 
       console.log('the url=' + url);
       const response = await axios.get(url);
@@ -103,18 +103,8 @@ const Profile = ({route}) => {
       setAverageColor(color);
       setPie(pieData(data));
 
-      console.log('About to call toMood ring on ' + data)
-      
       const colors = data.map(function(m) {return convertToHex([m.red,m.green,m.blue])})
       
-      console.log('color1=' + colors[0]);
-      console.log('color2=' + colors[1]);
-      console.log('color3=' + colors[2]);
-      console.log('color4=' + colors[3]);
-      console.log('color5=' + colors[4]);
-      console.log('color6=' + colors[5]);
-      console.log('color7=' + colors[6]);
-      console.log('color8=' + colors[7]);
       if (colors[0] != undefined) {
         setColor1(colors[0]);
       } else {
@@ -155,9 +145,6 @@ const Profile = ({route}) => {
       } else {
         setColor8("#FFFFFF")
       }
-
-
-
       
     } catch (error) {
       console.error(error);

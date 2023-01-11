@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {ActivityIndicator} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Header from './Header'
@@ -38,6 +38,7 @@ const Good = () => {
 
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   
   getUserSessionValue().then(value => setEmail(value));
   
@@ -56,6 +57,7 @@ const Good = () => {
       <Header/>
       
       <SafeAreaView style={styles.container}>
+      
       
         <View style={styles.parent}>
           <Mood word={'excellent'} email={email} created={now} navigation={navigation} />

@@ -20,8 +20,7 @@ async function createMood(word, email, description, red, green, blue, created, n
       }
     })
   .then(response => { 
-    console.log('Response: ' + response.data)  
-    navigation.navigate('FeedScreen');
+    setTimeout(() => {navigation.navigate('FeedScreen');}, 500)
     }).catch(error=>console.log('Error: ' + error))
 }
 

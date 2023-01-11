@@ -5,7 +5,6 @@ import createMood from './CreateMood';
 const Mood = ({word, email, created, navigation}) => {
     return (
         <TouchableOpacity style={styles.buttonBasic} onPress={() => {
-            console.log("about to get default colors for " + word)
             const colors = getDefaultColorFromMood({word: word, email: email, created: created })
             createMood(word, email, 'This is a description', colors[0], colors[1], colors[2], created, navigation)
             }

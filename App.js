@@ -17,6 +17,7 @@ import Bad from './Bad';
 import RegisterUserForm from './RegisterUserForm';
 import Profile from './Profile';
 import TestSvg from './TestSvg';
+import Globe from './Globe';
 
 
 function StackNavigator() {
@@ -54,6 +55,7 @@ const App = () => {
         <Tab.Screen name="FeedScreen" component={FeedScreen}/>
         <Tab.Screen name="Profile" component={Profile}/>
         <Tab.Screen name="TestSvg" component={TestSvg}/>
+        
         
         </Tab.Navigator>
     </NavigationContainer>
