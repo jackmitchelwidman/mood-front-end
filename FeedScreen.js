@@ -17,36 +17,53 @@ import avatar from './ImageManager';
 
 const FeedScreen = () => {
 
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
+    const [currentMax, setCurrentMax] = useState(-Infinity)
     const navigation = useNavigation();
     
+    useEffect(() => {
+      const newCurrentMax = Math.max.apply(null, data.map(m => m.id))
+      setCurrentMax(newCurrentMax)
+    }, [data]);
+
     async function fetchData(page, pageSize) {
+      
       try {
         
         const url = 'http://feel-databytes.herokuapp.com/moods/' + page + '/' + pageSize;
-        console.log('url=' + url);
+        
         const response = await axios.get(url);
-        const data = await response.data;
-        setData(data);
+        const newData = await response.data;
+
+        if (newData.length == 0) return;
+        
+        const maxIdNew = Math.max.apply(null, newData.map(m=>m.id));
+        
+        if  (maxIdNew > currentMax) {
+         
+          setData([...newData.filter(function(n) { 
+            return (n.id > currentMax)
+          }),...data])
+        }  
       } catch (error) {
         console.error(error);
       }
     }
 
-    useEffect(() => {
-      
+    useEffect(() => { 
       fetchData(1,10)
     }, []);
 
     const loadMore = async () => {
       if (loading) return;
-      setLoading(true);
-      fetchData(1,10)
-      //setPage(page + 1);
-      setLoading(false);
-    }
+        setLoading(true);
+        console.log('Inside loadMore. About to call fetchData on page' + page)
+        fetchData(page+1,10)
+        setPage(page + 1);
+        setLoading(false);
+      }
 
    const renderItem = ({item}) => {
         const rgbColor = 'rgb(' + item.red + ',' + item.green + ',' + item.blue + ')';
@@ -76,7 +93,7 @@ const FeedScreen = () => {
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        onMomentumScrollEnd={loadMore}
+        //onMomentumScrollEnd={loadMore}
         pullToRefreshCallback={() => fetchData(1,10)}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         onEndReachedThreshold={0.5}
