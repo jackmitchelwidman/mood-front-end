@@ -62,21 +62,30 @@ useFocusEffect(
 );
 
     const loadMore = async () => {
+      
       if (loading) return;
         setLoading(true);
         try {
+          
           const url = 'http://feel-databytes.herokuapp.com/moods/' + (page + 1) + '/' + 10;
           const response = await axios.get(url);
           const newData = await response.data;
-          
-          setData([...data,...newData.filter(function(m) {!(m.id in data.map(m => m.id))})])
+
+          const newDataIds = newData.map(m => m.id)
+          const oldDataIds = data.map(m => m.id)
+
+          const filteredData = newData.filter(function(m){
+              return (m.id < Math.min(...data.map(m => m.id)))
+          })
+        
+          setData([...data,...filteredData])
             
-        } catch (error) {
-          console.error(error);
+          } catch (error) {
+            console.error(error);
+          }
+          setPage(page + 1)
+          setLoading(false)
         }
-        setPage(page + 1)
-        setLoading(false)
-      }
 
    const renderItem = ({item}) => {
         const rgbColor = 'rgb(' + item.red + ',' + item.green + ',' + item.blue + ')';

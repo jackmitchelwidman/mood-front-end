@@ -38,8 +38,6 @@ const pieData = (moods) => {
     pd['count'] = c * factor;
 
     const rgb = getDefaultColorFromMood(mood);
-    console.log("rgb=" + rgb[0] + '. ' + rgb[1] + ', ' + rgb[2])
-    console.log('setting color field to ' + convertToHex([rgb[0],rgb[1],rgb[2]]));
     pd['color'] = convertToHex([rgb[0],rgb[1],rgb[2]]);
 
     result.push(pd)
@@ -94,11 +92,10 @@ const Profile = ({route}) => {
     try {
       
       const url = 'http://feel-databytes.herokuapp.com/moodsforuserlastweek/' + item.email; 
-      console.log('the url=' + url);
+      
       const response = await axios.get(url);
       const data = await response.data;
       setData(data);
-      console.log('The number of moods is ' + data.length);
       const color = getAverageColor(data);
       setAverageColor(color);
       setPie(pieData(data));
