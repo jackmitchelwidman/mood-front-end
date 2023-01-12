@@ -162,7 +162,7 @@ const Profile = ({route}) => {
       <Header />
       <SafeAreaView style={styles.container}>
        
-        <Svg height="300" width="300">
+        <Svg height={300} width={300}>
   <Defs>
     <RadialGradient
       id="grad"
@@ -174,14 +174,14 @@ const Profile = ({route}) => {
       fy="65"
       gradientUnits="userSpaceOnUse"
     >
-      <Stop offset="0" stopColor={color1} stopOpacity="1" />
-      <Stop offset="0.1" stopColor={color2} stopOpacity="1" />
-      <Stop offset="0.2" stopColor={color3} stopOpacity="1" />
-      <Stop offset="0.4" stopColor={color4} stopOpacity=".9" />
-      <Stop offset="0.5" stopColor={color5} stopOpacity="1" />
-      <Stop offset="0.8" stopColor={color6} stopOpacity="1" />
-      <Stop offset="0.9" stopColor={color7} stopOpacity="1" />
-      <Stop offset="1" stopColor={color8} stopOpacity="1" />
+      <Stop offset="0%" stopColor={color1} stopOpacity="1" />
+      <Stop offset="10%" stopColor={color2} stopOpacity="1" />
+      <Stop offset="20%" stopColor={color3} stopOpacity="1" />
+      <Stop offset="40%" stopColor={color4} stopOpacity=".9" />
+      <Stop offset="50%" stopColor={color5} stopOpacity="1" />
+      <Stop offset="80%" stopColor={color6} stopOpacity="1" />
+      <Stop offset="90%" stopColor={color7} stopOpacity="1" />
+      <Stop offset="100%" stopColor={color8} stopOpacity="1" />
     </RadialGradient>
   </Defs>
   <Circle  width={200} height={200} cx="150" cy="75" r="75" fill="url(#grad)" />
