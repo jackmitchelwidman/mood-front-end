@@ -80,6 +80,9 @@ const Profile = ({route}) => {
     const [color6, setColor6] = useState(["#FFFFFF"]);
     const [color7, setColor7] = useState(["#FFFFFF"]);
     const [color8, setColor8] = useState(["#FFFFFF"]);
+    const [color9, setColor9] = useState(["#FFFFFF"]);
+    const [color10, setColor10] = useState(["#FFFFFF"]);
+    const [color11, setColor11] = useState(["#FFFFFF"]);
 
 
   const navigation = useNavigation();  
@@ -141,7 +144,24 @@ const Profile = ({route}) => {
         setColor8(colors[7]);
       } else {
         setColor8("#FFFFFF")
+      } 
+      if (colors[9] != undefined) {
+        setColor9(colors[8]);
+      } else {
+        setColor9("#FFFFFF")
+      } 
+      if (colors[10] != undefined) {
+        setColor10(colors[9]);
+      } else {
+        setColor10("#FFFFFF")
       }
+      if (colors[11] != undefined) {
+        setColor11(colors[10]);
+      } else {
+        setColor11("#FFFFFF")
+      }  
+
+
       
     } catch (error) {
       console.error(error);
@@ -177,11 +197,14 @@ const Profile = ({route}) => {
       <Stop offset="0%" stopColor={color1} stopOpacity="1" />
       <Stop offset="10%" stopColor={color2} stopOpacity="1" />
       <Stop offset="20%" stopColor={color3} stopOpacity="1" />
-      <Stop offset="40%" stopColor={color4} stopOpacity=".9" />
-      <Stop offset="50%" stopColor={color5} stopOpacity="1" />
-      <Stop offset="80%" stopColor={color6} stopOpacity="1" />
-      <Stop offset="90%" stopColor={color7} stopOpacity="1" />
-      <Stop offset="100%" stopColor={color8} stopOpacity="1" />
+      <Stop offset="30%" stopColor={color4} stopOpacity=".9" />
+      <Stop offset="40%" stopColor={color5} stopOpacity="1" />
+      <Stop offset="50%" stopColor={color6} stopOpacity="1" />
+      <Stop offset="60%" stopColor={color7} stopOpacity="1" />
+      <Stop offset="70%" stopColor={color8} stopOpacity="1" />
+      <Stop offset="80%" stopColor={color9} stopOpacity="1" />
+      <Stop offset="90%" stopColor={color10} stopOpacity="1" />
+      <Stop offset="100%" stopColor={color11} stopOpacity="1" />
     </RadialGradient>
   </Defs>
   <Circle  width={200} height={200} cx="150" cy="75" r="75" fill="url(#grad)" />
