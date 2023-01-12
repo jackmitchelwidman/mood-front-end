@@ -8,7 +8,6 @@ import HomeScreen from "./HomeScreen"
 import FeedScreen from "./FeedScreen"
 import Login from "./Login"
 import { StyleSheet} from 'react-native';
-import PieChart from './MoodPieChart';
 import SettingsScreen from './SettingsScreen';
 import MoodPieChart from './MoodPieChart';
 import Good from './Good';
@@ -25,7 +24,7 @@ function StackNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="PieChart" component={PieChart} />
-      <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );
@@ -44,7 +43,7 @@ const App = () => {
       <Tab.Navigator >
         <Tab.Screen style={styles.container}
           name="HomeScreen" component={HomeScreen}/>
-        <Tab.Screen name="Data" component={PieChart} 
+        <Tab.Screen name="MoodPieChart" component={MoodPieChart} 
           options={{ title: 'Data' }}/>
         <Tab.Screen name="Settings" component={SettingsScreen} />  
         <Tab.Screen name="Login" component={Login} options={{ tabBarVisible: false }}/>
