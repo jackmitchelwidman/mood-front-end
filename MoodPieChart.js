@@ -15,21 +15,22 @@ import getDefaultColorFromMood from './DefaultColors';
 import Canvas from 'react-native-canvas';
 import { useRef } from 'react';
 import Svg, {Circle,Defs,RadialGradient, Stop} from 'react-native-svg';
+import getSessionUserValue from './SecurityCheck';
+import { useFocusEffect } from '@react-navigation/native';
 
 
 
 const pieData = (moods) => {
-  console.log("Inside pieData. count=" + moods.length);
   
   const result = [];
 
-  const count = new Set(moods.map(m=>m.word)).size;
+  const count = Math.min(...[moods.length,10])
+
+  moods = moods.splice(0,10)
 
   const factor = Math.round(100/count);
 
   for (let mood of moods) {
-    console.log('mood: word=' + mood.word)
-    console.log('mood: red=' + mood.red)
     let pd ={};
     if (mood.word in result.map(m=>m.word)) {
       continue;
@@ -38,14 +39,9 @@ const pieData = (moods) => {
 
     const c = moods.filter(function(m){ return (mood.word==m.word)}).length;
     pd['count'] = c * factor;
-    console.log('count=' + pd['count'])
-
     const rgb = getDefaultColorFromMood(mood);
-    
-    
     pd['color'] = convertToHex([rgb[0],rgb[1],rgb[2]]);
-    console.log('color=' + pd['color'])
-
+    
     result.push(pd)
   }
  
@@ -78,40 +74,41 @@ const MoodPieChart = () => {
     //const moodColor = color(rgbColor).hex().toString(); 
     const [data, setData] = useState([]);
     const [pie, setPie] = useState([]);
+    const [email, setEmail] = useState(null);
 
     const navigation = useNavigation();  
+    
+    getSessionUserValue().then(value => {
+      setEmail(value)
+    })
 
-  checkUserLogin(navigation)
+    useFocusEffect(
+      React.useCallback(() => {
+        fetchData(email);
+        return () => {
+          // cleanup
+        };
+      }, [email])
+    );
 
-  const imgSrc = avatar() + 'jack.widman@gmail.com' + '.jpg';
+  const imgSrc = avatar() + email + '.jpg';
 
-  async function fetchData() {
+  async function fetchData(email) {
     try {
       
-      const url = 'http://feel-databytes.herokuapp.com/moodsforuserlastweek/' + "jack.widman@gmail.com"; 
+      const url = 'http://feel-databytes.herokuapp.com/moodsforuserlastweek/' + email; 
       
       const response = await axios.get(url);
       const data = await response.data;
       setData(data);
-      // const color = getAverageColor(data);
       
       setPie(pieData(data));
 
-      
-      
     } catch (error) {
       console.error(error);
     }
   }
   
-  const isFocused = useIsFocused();
-
-  useEffect(() => {
-    if (isFocused) {
-      fetchData();
-    }
-  }, [isFocused]);
-
   return (
     <>
       <StatusBar barStyle="light-content" />
