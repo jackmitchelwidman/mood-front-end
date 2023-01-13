@@ -1,6 +1,6 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import { ColorPicker, toHsv } from 'react-native-color-picker'
+import React from 'react';
+import { View, Text } from 'react-native';
+import { ColorPicker, toHsv } from 'react-native-color-picker';
 
 export class ExampleControlledVertical extends React.Component {
 

@@ -43,12 +43,14 @@ export function getPositionFromMood(mood) {
     position['worried'] = 2
     position['anxious'] = 2
 
-    position['depressed'] = 3
-    position['hopeless'] = 3
-    position['angry'] = 3
-    position['unhappy'] = 3
-    position['lonely'] = 3
-    position['melancholy'] = 3
+    position['depressed'] = 1
+    position['hopeless'] = 1
+    position['angry'] = 1
+    position['unhappy'] = 1
+    position['lonely'] = 1
+    position['melancholy'] = 1
+
+    if (mood == [])  return -1
 
     return position[mood.word];
 

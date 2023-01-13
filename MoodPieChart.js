@@ -10,11 +10,8 @@ import avatar from './ImageManager';
 import { useState } from 'react';
 import {useIsFocused} from '@react-navigation/native';
 import axios from 'axios';
-import {getAverageColor, convertToHex, wordCount } from './MoodDataUtils';
+import {convertToHex } from './MoodDataUtils';
 import getDefaultColorFromMood from './DefaultColors';
-import Canvas from 'react-native-canvas';
-import { useRef } from 'react';
-import Svg, {Circle,Defs,RadialGradient, Stop} from 'react-native-svg';
 import getSessionUserValue from './SecurityCheck';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -63,10 +60,7 @@ async function checkUserLogin(n) {
 }
 
 const MoodPieChart = () => {
-
-    //const { item } = route.params;
-    //const rgbColor = 'rgb(' + item.red + ',' + item.green + ',' + item.blue + ')';
-    //const moodColor = color(rgbColor).hex().toString(); 
+  
     const [data, setData] = useState([]);
     const [pie, setPie] = useState([]);
     const [email, setEmail] = useState(null);

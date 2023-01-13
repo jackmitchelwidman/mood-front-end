@@ -56,9 +56,7 @@ const App = () => {
         <Tab.Screen name="Profile" component={Profile}/>
         <Tab.Screen name="TestSvg" component={TestSvg}/>
         <Tab.Screen name="BezierLineChart" component={BezierLineChart}/>
-        
-        
-        </Tab.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };

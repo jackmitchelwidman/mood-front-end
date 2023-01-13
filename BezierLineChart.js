@@ -1,22 +1,64 @@
-import { View, Text, Dimensions, StyleSheet, StatusBar } from 'react-native'
-import React from 'react'
+import { View, SafeAreaView, Dimensions, StyleSheet, StatusBar } from 'react-native'
+import React, {useState } from 'react';
 import { LineChart } from 'react-native-chart-kit';
-import { getPositionFromMood } from './DefaultColors'
+import { getPositionFromMood } from './DefaultColors';
+import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
+import getSessionUserValue from './SecurityCheck';
+import { useFocusEffect } from '@react-navigation/native';
+import Header from './Header';
 
-function BezierLineChart() {
+
+
+const BezierLineChart = () =>  {
+
+    const [data, setData] = useState([]);
+    const [chartData, setChartData] = useState([])
+    const [email, setEmail] = useState("");
+
+    const navigation = useNavigation();  
+    
+    getSessionUserValue().then(value => {
+      setEmail(value)
+    })
+
+    useFocusEffect(
+      React.useCallback(() => {
+        fetchData(email);
+        return () => {
+          // cleanup
+        };
+      }, [email])
+    );
+
+   
+
+  async function fetchData(email) {
+    try {
+      
+      if (email == "") return []
+      const url = 'http://feel-databytes.herokuapp.com/moodsforuserlastweek/' + email; 
+      const response = await axios.get(url);
+      const data = await response.data;
+      
+      setData(data.map(mood => getPositionFromMood(mood)));
+     
+    } catch(e) {console.log(e)}
+  }
+
     return (
       <>
       <StatusBar barStyle="light-content" />
-        <Text style={styles.title}>MOOD</Text>
-        <Text style={styles.question}>How do you feel?</Text>
+      <Header />
+      <SafeAreaView style={styles.container}>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       
   <LineChart
     data={{
-      labels: ["Good", "Neutral", "Bad"],
+      labels: [1,2,3,4,5,6,7,8,9,10],
       datasets: [
         {
-          data: [1,3,2,1,3,1,1,2]
+          data: data
         }
       ]
     }}
@@ -48,6 +90,7 @@ function BezierLineChart() {
     }}
   />
 </View>
+</SafeAreaView>
         
         </>
     )
