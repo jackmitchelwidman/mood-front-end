@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
 
     column : {
       flexBasis: '33.33%',
-      textAlign:'left'
+      textAlign:'left',
+      backgroundColor: "white",
     },
 
     list : {

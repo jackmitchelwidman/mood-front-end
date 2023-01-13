@@ -19,35 +19,30 @@ import getSessionUserValue from './SecurityCheck';
 import { useFocusEffect } from '@react-navigation/native';
 
 
-
 const pieData = (moods) => {
-  
+  console.log("Inside pieData")
   const result = [];
-
-  const count = Math.min(...[moods.length,10])
-
   moods = moods.splice(0,10)
-
+  const count = moods.length
   const factor = Math.round(100/count);
-
+  let usedWords = []
   for (let mood of moods) {
-    let pd ={};
-    if (mood.word in result.map(m=>m.word)) {
-      continue;
+      if (!usedWords.includes(mood.word)) {
+        let pd ={};
+        const rgb = getDefaultColorFromMood(mood);
+        pd['color'] = convertToHex([rgb[0],rgb[1],rgb[2]]);
+        pd['word'] = mood.word
+        usedWords.push(mood.word)
+        result.push(pd)
+      }
     }
-    pd['word'] = mood.word;
-
-    const c = moods.filter(function(m){ return (mood.word==m.word)}).length;
-    pd['count'] = c * factor;
-    const rgb = getDefaultColorFromMood(mood);
-    pd['color'] = convertToHex([rgb[0],rgb[1],rgb[2]]);
-    
-    result.push(pd)
-  }
- 
- 
-  return result;
   
+  for (let pd of result) {
+    const c = moods.filter(function(m){ return (pd.word==m.word)}).length;
+    pd['count'] = c * factor  
+  } 
+
+return result 
 }
 
 
@@ -114,6 +109,7 @@ const MoodPieChart = () => {
       <StatusBar barStyle="light-content" />
       <Header />
       <SafeAreaView style={styles.container}>
+        
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'white' }}>
       <PieChart
             data={pie}  

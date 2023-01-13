@@ -62,7 +62,7 @@ useFocusEffect(
 );
 
     const loadMore = async () => {
-      
+      console.log("inside loadmore")
       if (loading) return;
         setLoading(true);
         try {
@@ -77,7 +77,7 @@ useFocusEffect(
           const filteredData = newData.filter(function(m){
               return (m.id < Math.min(...data.map(m => m.id)))
           })
-        
+
           setData([...data,...filteredData])
             
           } catch (error) {

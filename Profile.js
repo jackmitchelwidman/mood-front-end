@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {View, Dimensions, SafeAreaView, Image, StatusBar, Alert} from 'react-native';
+import {View, Text, SafeAreaView, Image, StatusBar, Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from './Header';
@@ -180,8 +180,11 @@ const Profile = ({route}) => {
     <>
       <StatusBar barStyle="light-content" />
       <Header />
+      <View style={{backgroundColor: 'white', left: 15}}>
+      <Image style={styles.column} source={{ uri: imgSrc }} resizeMode={"contain"} cache={'force-cache'} style={{ width: 100, height:100, borderRadius: 100, borderWidth: 8, borderColor: moodColor}} />
+      </View>
       <SafeAreaView style={styles.container}>
-       
+      
         <Svg height={300} width={300}>
   <Defs>
     <RadialGradient
