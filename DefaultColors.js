@@ -27,4 +27,31 @@ function getDefaultColorFromMood(mood)  {
     return colors[mood.word];
 }
 
+export function getPositionFromMood(mood) {
+    var position = {};
+    position['excellent'] = 3
+    position['joyful'] = 3
+    position['excited'] = 3
+    position['content'] = 3
+    position['grateful'] = 3
+    position['playful'] = 3
+
+    position['bored'] = 2
+    position['restless'] = 2
+    position['pensive'] = 2
+    position['apathetic'] = 2
+    position['worried'] = 2
+    position['anxious'] = 2
+
+    position['depressed'] = 3
+    position['hopeless'] = 3
+    position['angry'] = 3
+    position['unhappy'] = 3
+    position['lonely'] = 3
+    position['melancholy'] = 3
+
+    return position[mood.word];
+
+}
+
 export default getDefaultColorFromMood;
